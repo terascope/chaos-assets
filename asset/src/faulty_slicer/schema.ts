@@ -10,7 +10,6 @@ export default class Schema extends ConvictSchema<FaultySlicer> {
         if (!opConfig) {
             throw new Error('No opConfig was found for operation faulty_slicer on the job');
         }
-
     }
 
     build(): AnyObject {

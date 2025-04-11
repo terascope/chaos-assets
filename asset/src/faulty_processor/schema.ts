@@ -13,7 +13,6 @@ export default class Schema extends ConvictSchema<FaultyProcessorConfig> {
         if (opConfig.errorStart >= opConfig.errorEnd) {
             throw new Error('"errorStart" must be less than "errorEnd" in faulty_processor config');
         }
-
     }
 
     build(): AnyObject {
