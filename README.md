@@ -1,6 +1,6 @@
 # chaos-assets
 
-> Teraslice standard processor asset bundle
+> Teraslice chaos asset bundle
 
 ## Getting Started
 
@@ -16,6 +16,10 @@ teraslice-cli assets deploy <cluster-alias> --build
 ```
 
 ## Operations
+
+- [faulty_processor](./asset/docs/operations/faulty_processor.md)
+
+- [faulty_slicer](./asset/docs/operations/faulty_slicer.md)
 
 ## Contributing
 
