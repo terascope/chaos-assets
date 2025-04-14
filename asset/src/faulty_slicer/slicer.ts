@@ -10,7 +10,7 @@ export default class FaultySliceSlicer extends Slicer<FaultySlicer> {
 
         this.sliceNumber = 1;
         this.sliceSize = this.opConfig.size;
-        this.faultOnSlice = this.opConfig.faultOnSlice;
+        this.faultOnSlice = this.opConfig.fault_on_slice;
     }
 
     async initialize(): Promise<void> {}
@@ -20,7 +20,7 @@ export default class FaultySliceSlicer extends Slicer<FaultySlicer> {
     }
 
     async slice(): Promise<FaultySlice> {
-        if (this.faultOnSlice >= this.sliceNumber) {
+        if (this.sliceNumber >= this.faultOnSlice) {
             throw new Error(`Fault on slice ${this.sliceNumber}..`);
         }
         const slice: FaultySlice = {

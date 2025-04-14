@@ -24,7 +24,8 @@ export default class FaultyProcessor extends ProcessorCore<FaultyProcessorConfig
 
     handle(input: DataEntity[]): Promise<DataEntity[]> {
         this.slicesProcessed++;
-        if (this.slicesProcessed >= this.errorStart && this.slicesProcessed < this.errorEnd) {
+
+        if (this.slicesProcessed >= (this.errorStart - 1) && this.slicesProcessed < this.errorEnd) {
             if (this.crashType === 'throw') {
                 throw new Error('Processor error');
             } else if (this.crashType === 'exit') {

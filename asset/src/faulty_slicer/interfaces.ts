@@ -2,7 +2,7 @@ import { OpConfig } from '@terascope/types';
 
 export interface FaultySlicer extends OpConfig {
     size: number;
-    faultOnSlice: number;
+    fault_on_slice: number;
 }
 
 export interface FaultySlice {

@@ -10,54 +10,56 @@ export default class Schema extends ConvictSchema<FaultyProcessorConfig> {
         if (!opConfig) {
             throw new Error('No opConfig was found for operation faulty_processor on the job');
         }
-        if (opConfig.errorStart >= opConfig.errorEnd) {
-            throw new Error('"errorStart" must be less than "errorEnd" in faulty_processor config');
+        if (opConfig.error_start >= opConfig.error_end) {
+            throw new Error('"error_start" must be less than "error_end" in faulty_processor config');
         }
     }
 
     build(): AnyObject {
         return {
-            errorStart: {
+            error_start: {
                 doc: 'The beginning range to start erroring slices on.',
                 default: 100,
                 format(val: any) {
-                    if (isNaN(val)) {
-                        throw new Error('Invalid errorStart parameter for faulty_processor, must be a number');
+                    if (!Number.isInteger(val)) {
+                        throw new Error('Invalid error_start parameter for faulty_processor, must be a number');
                     } else if (val <= 0) {
-                        throw new Error('Invalid errorStart parameter for faulty_processor, must be greater than zero');
+                        throw new Error('Invalid error_start parameter for faulty_processor, must be greater than zero');
                     }
                 }
             },
-            errorEnd: {
+            error_end: {
                 doc: 'The end range to stop erroring slices on.',
                 default: 200,
                 format(val: any) {
-                    if (isNaN(val)) {
-                        throw new Error('Invalid errorEnd parameter for faulty_processor, must be a number');
+                    if (!Number.isInteger(val)) {
+                        throw new Error('Invalid error_end parameter for faulty_processor, must be a number');
                     } else if (val <= 0) {
-                        throw new Error('Invalid errorEnd parameter for faulty_processor, must be greater than zero');
+                        throw new Error('Invalid error_end parameter for faulty_processor, must be greater than zero');
                     }
                 }
             },
-            errorCode: {
-                doc: 'The exit code to use when crashType is set to exit.',
+            error_code: {
+                doc: 'The exit code to use when crash_type is set to exit.',
                 default: 500,
                 format(val: any) {
-                    if (isNaN(val)) {
-                        throw new Error('Invalid errorEnd parameter for faulty_processor, must be a number');
+                    if (!Number.isInteger(val)) {
+                        throw new Error('Invalid error_code parameter for faulty_processor, must be a number');
+                    } else if (val < 0) {
+                        throw new Error('Invalid error_code parameter for faulty_processor, must not be negative');
                     }
                 }
             },
-            crashType: {
+            crash_type: {
                 doc: 'The type of fault that will occur. Options are "exit", "throw", or "kill"',
                 default: 'throw',
                 format(val: string) {
                     const validTypes: string[] = ['throw', 'exit', 'kill'];
                     if (typeof val !== 'string') {
-                        throw new Error('Invalid crashType parameter for faulty_processor, must be a string');
+                        throw new Error('Invalid crash_type parameter for faulty_processor, must be a string');
                     }
                     if (!validTypes.includes(val)) {
-                        throw new Error('Invalid crashType parameter for faulty_processor, only options are "exit", "throw", or "kill"');
+                        throw new Error('Invalid crash_type parameter for faulty_processor, only options are "exit", "throw", or "kill"');
                     }
                 }
             }

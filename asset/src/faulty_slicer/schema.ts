@@ -18,21 +18,21 @@ export default class Schema extends ConvictSchema<FaultySlicer> {
                 doc: 'The amount of records to be generated per slice',
                 default: 1,
                 format(val: any) {
-                    if (isNaN(val)) {
+                    if (!Number.isInteger(val)) {
                         throw new Error('Invalid size parameter for faulty_slicer, must be a number');
                     } else if (val <= 0) {
                         throw new Error('Invalid size parameter for faulty_slicer, must be greater than zero');
                     }
                 }
             },
-            faultOnSlice: {
+            fault_on_slice: {
                 doc: 'The amount of slices to be produced before faulting',
                 default: 100,
                 format(val: any) {
-                    if (isNaN(val)) {
-                        throw new Error('Invalid faultOnSlice parameter for faulty_slicer, must be a number');
+                    if (!Number.isInteger(val)) {
+                        throw new Error('Invalid fault_on_slice parameter for faulty_slicer, must be a number');
                     } else if (val <= 0) {
-                        throw new Error('Invalid faultOnSlice parameter for faulty_slicer, must be greater than zero');
+                        throw new Error('Invalid fault_on_slice parameter for faulty_slicer, must be greater than zero');
                     }
                 }
             }
