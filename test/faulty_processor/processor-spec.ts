@@ -18,10 +18,10 @@ describe('faulty_processor Processor', () => {
 
     beforeEach(async () => {
         data = [
-            DataEntity.make({ test: 1, name: 'foo'}),
-            DataEntity.make({ test: 2, name: 'bar'}),
-            DataEntity.make({ test: 3, name: 'Dan'}),
-            DataEntity.make({ test: 4, name: 'Bob'})
+            DataEntity.make({ test: 1, name: 'foo' }),
+            DataEntity.make({ test: 2, name: 'bar' }),
+            DataEntity.make({ test: 3, name: 'Dan' }),
+            DataEntity.make({ test: 4, name: 'Bob' })
         ];
     });
 
@@ -35,11 +35,10 @@ describe('faulty_processor Processor', () => {
             error_end: 10
         });
         const [slice1, slice2, slice3, slice4] = await harness.runSlice(data);
-        expect(slice1).toEqual({ test: 1, name: 'foo'});
-        expect(slice2).toEqual({ test: 2, name: 'bar'});
-        expect(slice3).toEqual({ test: 3, name: 'Dan'});
-        expect(slice4).toEqual({ test: 4, name: 'Bob'});
-
+        expect(slice1).toEqual({ test: 1, name: 'foo' });
+        expect(slice2).toEqual({ test: 2, name: 'bar' });
+        expect(slice3).toEqual({ test: 3, name: 'Dan' });
+        expect(slice4).toEqual({ test: 4, name: 'Bob' });
     });
 
     it('should throw slices 2 and 3', async () => {
@@ -49,13 +48,12 @@ describe('faulty_processor Processor', () => {
 
         });
         const [slice1] = await harness.runSlice([data[0]]);
-        expect(slice1).toEqual({ test: 1, name: 'foo'});
+        expect(slice1).toEqual({ test: 1, name: 'foo' });
 
-        expect(harness.runSlice([data[1]])).toReject();
-        expect(harness.runSlice([data[2]])).toReject();
+        await expect(harness.runSlice([data[1]])).toReject();
+        await expect(harness.runSlice([data[2]])).toReject();
 
         const [slice4] = await harness.runSlice([data[3]]);
-        expect(slice4).toEqual({ test: 4, name: 'Bob'});
-
+        expect(slice4).toEqual({ test: 4, name: 'Bob' });
     });
 });

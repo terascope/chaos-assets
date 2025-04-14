@@ -80,6 +80,6 @@ describe('faulty_slicer slicer', () => {
         const [slice2] = await test.createSlices();
         expect(slice2).toEqual({ size: 10, slice_number: 2 });
 
-        expect(test.createSlices()).rejects.toThrow('Fault on slice 3..');
+        await expect(test.createSlices()).rejects.toThrow('Fault on slice 3..');
     });
 });

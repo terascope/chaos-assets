@@ -54,9 +54,8 @@ describe('faulty_processor schema', () => {
     });
 
     it('should resolve with valid values', async () => {
-        await expect(makeSchema({ error_start: 105, errorEnd: 106})).toResolve();
+        await expect(makeSchema({ error_start: 105, errorEnd: 106 })).toResolve();
         await expect(makeSchema({ error_start: 1 })).toResolve();
-
 
         await expect(makeSchema({ error_code: 0 })).toResolve();
         await expect(makeSchema({ error_code: 1 })).toResolve();
@@ -68,9 +67,9 @@ describe('faulty_processor schema', () => {
     });
 
     it('should throw with conflicting config', async () => {
-        await expect(makeSchema({ error_start: 10, error_end: 5}))
+        await expect(makeSchema({ error_start: 10, error_end: 5 }))
             .rejects.toThrow('"error_start" must be less than "error_end" in faulty_processor config');
 
-        await expect(makeSchema({ error_start: 105, error_end: 105})).toReject();
+        await expect(makeSchema({ error_start: 105, error_end: 105 })).toReject();
     });
 });

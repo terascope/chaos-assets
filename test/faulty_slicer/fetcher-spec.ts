@@ -1,5 +1,5 @@
 import 'jest-extended';
-import { AnyObject, DataEntity } from '@terascope/job-components';
+import { AnyObject } from '@terascope/job-components';
 import { WorkerTestHarness } from 'teraslice-test-harness';
 
 describe('faulty_slicer fetcher', () => {
