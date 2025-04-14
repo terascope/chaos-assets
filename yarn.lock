@@ -1210,12 +1210,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@terascope/job-components@npm:~1.9.8":
-  version: 1.9.9
-  resolution: "@terascope/job-components@npm:1.9.9"
+"@terascope/job-components@npm:~1.10.0":
+  version: 1.10.0
+  resolution: "@terascope/job-components@npm:1.10.0"
   dependencies:
     "@terascope/types": "npm:~1.4.1"
-    "@terascope/utils": "npm:~1.7.8"
+    "@terascope/utils": "npm:~1.8.0"
     convict: "npm:~6.2.4"
     convict-format-with-moment: "npm:~6.2.0"
     convict-format-with-validator: "npm:~6.2.0"
@@ -1224,7 +1224,7 @@ __metadata:
     prom-client: "npm:~15.1.3"
     semver: "npm:~7.7.1"
     uuid: "npm:~11.1.0"
-  checksum: 10c0/4c573957d8c640d0c963b1cd7da16e6e6e728d6a8bde0026ddcdf2b56977175db7fd264f753891c1c501f700513815f678fa0c836778f0d95c8bb7b3b57e2bc1
+  checksum: 10c0/39100f2552c0ad5e0d2d1cfbcd88ce597278320d63573ea49d556819ceaad5c405fecd0caf4fd6246413c97f67d4e9e572e6da9cefa799d26332141a84757fde
   languageName: node
   linkType: hard
 
@@ -1324,6 +1324,50 @@ __metadata:
     shallow-clone: "npm:~3.0.1"
     validator: "npm:~13.12.0"
   checksum: 10c0/6a8d2cc63740bcd3a0b102af0d5acc2377e7f00e6021af32cc9da6a010c4e48c7ecece6a6818a3597e0fa232feee0c4013f69929af7eaef124737790bda2c2b9
+  languageName: node
+  linkType: hard
+
+"@terascope/utils@npm:~1.8.0":
+  version: 1.8.0
+  resolution: "@terascope/utils@npm:1.8.0"
+  dependencies:
+    "@chainsafe/is-ip": "npm:~2.1.0"
+    "@terascope/types": "npm:~1.4.1"
+    "@turf/bbox": "npm:~7.2.0"
+    "@turf/bbox-polygon": "npm:~7.2.0"
+    "@turf/boolean-contains": "npm:~7.2.0"
+    "@turf/boolean-disjoint": "npm:~7.2.0"
+    "@turf/boolean-equal": "npm:~7.2.0"
+    "@turf/boolean-intersects": "npm:~7.2.0"
+    "@turf/boolean-point-in-polygon": "npm:~7.2.0"
+    "@turf/boolean-within": "npm:~7.2.0"
+    "@turf/circle": "npm:~7.2.0"
+    "@turf/helpers": "npm:~7.2.0"
+    "@turf/invariant": "npm:~7.2.0"
+    "@turf/line-to-polygon": "npm:~7.2.0"
+    "@types/lodash-es": "npm:~4.17.12"
+    "@types/validator": "npm:~13.12.2"
+    awesome-phonenumber: "npm:~7.4.0"
+    date-fns: "npm:~4.1.0"
+    date-fns-tz: "npm:~3.2.0"
+    datemath-parser: "npm:~1.0.6"
+    debug: "npm:~4.4.0"
+    geo-tz: "npm:~8.1.4"
+    ip-bigint: "npm:~8.2.1"
+    ip-cidr: "npm:~4.0.2"
+    ip6addr: "npm:~0.2.5"
+    ipaddr.js: "npm:~2.2.0"
+    is-cidr: "npm:~5.1.1"
+    is-plain-object: "npm:~5.0.0"
+    js-string-escape: "npm:~1.0.1"
+    kind-of: "npm:~6.0.3"
+    latlon-geohash: "npm:~2.0.0"
+    lodash-es: "npm:~4.17.21"
+    mnemonist: "npm:~0.40.3"
+    p-map: "npm:~7.0.3"
+    shallow-clone: "npm:~3.0.1"
+    validator: "npm:~13.12.0"
+  checksum: 10c0/12f59ea11f4c3ac16a84f771944f22b9650d4586d81f25efab4573bdbece848267828d9d69bd7694bf1a7320b978309d6932f1db3fec9a474bd8e5217174e77c
   languageName: node
   linkType: hard
 
@@ -2851,7 +2895,7 @@ __metadata:
   resolution: "chaos-assets-bundle@workspace:."
   dependencies:
     "@terascope/eslint-config": "npm:~1.1.10"
-    "@terascope/job-components": "npm:~1.9.8"
+    "@terascope/job-components": "npm:~1.10.0"
     "@terascope/scripts": "npm:~1.14.0"
     "@types/express": "npm:~4.17.21"
     "@types/fs-extra": "npm:~11.0.4"
@@ -2879,7 +2923,7 @@ __metadata:
   resolution: "chaos@workspace:asset"
   dependencies:
     "@terascope/data-mate": "npm:~1.7.8"
-    "@terascope/job-components": "npm:~1.9.8"
+    "@terascope/job-components": "npm:~1.10.0"
     "@terascope/teraslice-state-storage": "npm:~1.8.5"
     "@terascope/utils": "npm:~1.7.7"
     "@types/express": "npm:~4.17.21"
