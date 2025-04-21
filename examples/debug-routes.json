@@ -1,0 +1,27 @@
+{
+    "name": "Debug Routes",
+    "lifecycle": "once",
+    "max_retries": 0,
+    "slicers": 1,
+    "workers": 1,
+    "assets": ["elasticsearch:^2.7.7", "standard:0.14.0"],
+    "operations": [
+        {
+            "_op": "elasticsearch_reader",
+            "index": "people",
+            "date_field_name": "birthday",
+            "size": 10000
+        },
+        {
+            "_op": "set_key",
+            "field": "_key"
+        },
+        {
+            "_op": "hash_router",
+            "partitions": 10
+        },
+        {
+            "_op": "debug_routes"
+        }
+    ]
+}

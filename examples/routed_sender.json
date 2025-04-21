@@ -1,0 +1,39 @@
+{
+    "name": "Routed Sender",
+    "lifecycle": "once",
+    "max_retries": 0,
+    "slicers": 1,
+    "workers": 1,
+    "assets": ["elasticsearch:^2.7.7", "standard:0.14.1"],
+    "apis": [
+        {
+            "_name": "elasticsearch_sender_api",
+            "index": "ts_test_people"
+        }
+    ],
+    "operations": [
+        {
+            "_op": "elasticsearch_reader",
+            "index": "people",
+            "date_field_name": "birthday",
+            "size": 10000
+        },
+        {
+            "_op": "set_key",
+            "field": "_key"
+        },
+        {
+            "_op": "hash_router",
+            "partitions": 2
+        },
+        {
+            "_op": "routed_sender",
+            "size": 1000,
+            "api_name": "elasticsearch_sender_api",
+            "routing": {
+                "0": "test_es",
+                "1": "default"
+            }
+        }
+    ]
+}
