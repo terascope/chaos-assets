@@ -24,7 +24,7 @@
         "@terascope/data-mate": "~1.8.0",
         "@terascope/job-components": "~1.10.0",
         "@terascope/teraslice-state-storage": "~1.9.0",
-        "@terascope/utils": "~1.8.0",
+        "@terascope/utils": "~1.8.1",
         "@types/express": "~5.0.1",
         "express": "~5.1.0",
         "ts-transforms": "~1.8.0",
