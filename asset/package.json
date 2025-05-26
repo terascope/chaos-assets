@@ -27,7 +27,7 @@
         "@terascope/utils": "~1.8.1",
         "@types/express": "~5.0.2",
         "express": "~5.1.0",
-        "ts-transforms": "~1.8.1",
+        "ts-transforms": "~1.8.2",
         "tslib": "~2.8.1"
     },
     "engines": {
