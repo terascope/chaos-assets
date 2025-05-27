@@ -21,13 +21,12 @@
         "test": "yarn --cwd ../ test"
     },
     "dependencies": {
-        "@terascope/data-mate": "~1.8.1",
-        "@terascope/job-components": "~1.10.1",
-        "@terascope/teraslice-state-storage": "~1.9.1",
-        "@terascope/utils": "~1.8.1",
+        "@terascope/data-mate": "~1.8.2",
+        "@terascope/job-components": "~1.10.2",
+        "@terascope/teraslice-state-storage": "~1.9.2",
+        "@terascope/utils": "~1.8.2",
         "@types/express": "~5.0.2",
         "express": "~5.1.0",
-        "ts-transforms": "~1.8.1",
         "tslib": "~2.8.1"
     },
     "engines": {
