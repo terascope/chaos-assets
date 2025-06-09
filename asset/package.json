@@ -25,7 +25,7 @@
         "@terascope/job-components": "~1.10.2",
         "@terascope/teraslice-state-storage": "~1.9.2",
         "@terascope/utils": "~1.8.2",
-        "@types/express": "~5.0.2",
+        "@types/express": "~5.0.3",
         "express": "~5.1.0",
         "tslib": "~2.8.1"
     },
