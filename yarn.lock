@@ -1650,6 +1650,50 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@terascope/utils@npm:~1.8.3":
+  version: 1.8.3
+  resolution: "@terascope/utils@npm:1.8.3"
+  dependencies:
+    "@chainsafe/is-ip": "npm:~2.1.0"
+    "@terascope/types": "npm:~1.4.1"
+    "@turf/bbox": "npm:~7.2.0"
+    "@turf/bbox-polygon": "npm:~7.2.0"
+    "@turf/boolean-contains": "npm:~7.2.0"
+    "@turf/boolean-disjoint": "npm:~7.2.0"
+    "@turf/boolean-equal": "npm:~7.2.0"
+    "@turf/boolean-intersects": "npm:~7.2.0"
+    "@turf/boolean-point-in-polygon": "npm:~7.2.0"
+    "@turf/boolean-within": "npm:~7.2.0"
+    "@turf/circle": "npm:~7.2.0"
+    "@turf/helpers": "npm:~7.2.0"
+    "@turf/invariant": "npm:~7.2.0"
+    "@turf/line-to-polygon": "npm:~7.2.0"
+    "@types/lodash-es": "npm:~4.17.12"
+    "@types/validator": "npm:~13.12.3"
+    awesome-phonenumber: "npm:~7.5.0"
+    date-fns: "npm:~4.1.0"
+    date-fns-tz: "npm:~3.2.0"
+    datemath-parser: "npm:~1.0.6"
+    debug: "npm:~4.4.1"
+    geo-tz: "npm:~8.1.4"
+    ip-bigint: "npm:~8.2.1"
+    ip-cidr: "npm:~4.0.2"
+    ip6addr: "npm:~0.2.5"
+    ipaddr.js: "npm:~2.2.0"
+    is-cidr: "npm:~5.1.1"
+    is-plain-object: "npm:~5.0.0"
+    js-string-escape: "npm:~1.0.1"
+    kind-of: "npm:~6.0.3"
+    latlon-geohash: "npm:~2.0.0"
+    lodash-es: "npm:~4.17.21"
+    mnemonist: "npm:~0.40.3"
+    p-map: "npm:~7.0.3"
+    shallow-clone: "npm:~3.0.1"
+    validator: "npm:~13.12.0"
+  checksum: 10c0/95f5415f2a3d9f68eb1180d3c2467d78605c21372f0531a7114310bd92d4ab030d62a0b60b093fc240e96a562e80c1e5be8cf2fee2aa2eddbe69f09f8bfe36fb
+  languageName: node
+  linkType: hard
+
 "@ts-morph/common@npm:~0.19.0":
   version: 0.19.0
   resolution: "@ts-morph/common@npm:0.19.0"
@@ -2252,7 +2296,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/validator@npm:~13.12.2":
+"@types/validator@npm:~13.12.2, @types/validator@npm:~13.12.3":
   version: 13.12.3
   resolution: "@types/validator@npm:13.12.3"
   checksum: 10c0/bc40191cd2e3c9b4b8d1f10611038ae3793462685366201940f2ef953b3229c02edcdb7c73cc5e6f762d5ecf1762a821afadaf97f71bd7fb06fae3aeb2729caf
@@ -3516,7 +3560,7 @@ __metadata:
     "@terascope/data-mate": "npm:~1.8.3"
     "@terascope/job-components": "npm:~1.10.2"
     "@terascope/teraslice-state-storage": "npm:~1.9.2"
-    "@terascope/utils": "npm:~1.8.2"
+    "@terascope/utils": "npm:~1.8.3"
     "@types/express": "npm:~5.0.3"
     express: "npm:~5.1.0"
     tslib: "npm:~2.8.1"
