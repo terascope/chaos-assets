@@ -29,9 +29,9 @@
         "test:watch": "ts-scripts test --watch asset --"
     },
     "devDependencies": {
-        "@terascope/eslint-config": "~1.1.17",
-        "@terascope/job-components": "~1.10.2",
-        "@terascope/scripts": "~1.18.0",
+        "@terascope/eslint-config": "~1.1.18",
+        "@terascope/job-components": "~1.10.3",
+        "@terascope/scripts": "~1.18.1",
         "@types/express": "~5.0.3",
         "@types/fs-extra": "~11.0.4",
         "@types/jest": "~30.0.0",
@@ -42,7 +42,7 @@
         "@types/timsort": "~0.3.3",
         "eslint": "~9.29.0",
         "fs-extra": "~11.3.0",
-        "jest": "~30.0.0",
+        "jest": "~30.0.2",
         "jest-extended": "~6.0.0",
         "node-notifier": "~10.0.1",
         "semver": "~7.7.2",
