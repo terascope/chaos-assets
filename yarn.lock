@@ -1481,15 +1481,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@terascope/elasticsearch-api@npm:~4.9.2":
-  version: 4.9.2
-  resolution: "@terascope/elasticsearch-api@npm:4.9.2"
+"@terascope/elasticsearch-api@npm:~4.9.3":
+  version: 4.9.3
+  resolution: "@terascope/elasticsearch-api@npm:4.9.3"
   dependencies:
     "@terascope/types": "npm:~1.4.1"
-    "@terascope/utils": "npm:~1.8.2"
+    "@terascope/utils": "npm:~1.8.3"
     bluebird: "npm:~3.7.2"
     setimmediate: "npm:~1.0.5"
-  checksum: 10c0/952fbcb508925f8182822e829e3ff407388991efb409b520419b45c5f23ccac7a1837a855a44c1f242c5a485adcf5facb04ed31ca43f178fce980a798d56e4df
+  checksum: 10c0/10974336bef9df72ece0fffeb55df1182b7e481c1b78913a9176288b85b959d6b98f96c10c398d8e51e81240a49027f22805b5a6d5312fcfce10c868f883e581
   languageName: node
   linkType: hard
 
@@ -1587,13 +1587,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@terascope/teraslice-state-storage@npm:~1.9.2":
-  version: 1.9.2
-  resolution: "@terascope/teraslice-state-storage@npm:1.9.2"
+"@terascope/teraslice-state-storage@npm:~1.9.3":
+  version: 1.9.3
+  resolution: "@terascope/teraslice-state-storage@npm:1.9.3"
   dependencies:
-    "@terascope/elasticsearch-api": "npm:~4.9.2"
-    "@terascope/utils": "npm:~1.8.2"
-  checksum: 10c0/cde304fc9ccc7156ba9ab8603011aba6fb8f8e87523625b10532d180461991ee9b86307d9834e3887ae8aa99b4e4da9d6235ecf9e440ad1e018e3c9500b39a00
+    "@terascope/elasticsearch-api": "npm:~4.9.3"
+    "@terascope/utils": "npm:~1.8.3"
+  checksum: 10c0/144b25dc680c85d64dae44dd5f9b6891dfa6d57380ddf51eaf8903c82263d870adef164ae14806c2c2607b5de9f761685d0c52f49e112e8b53c41916c144e7ed
   languageName: node
   linkType: hard
 
@@ -1647,6 +1647,50 @@ __metadata:
     shallow-clone: "npm:~3.0.1"
     validator: "npm:~13.12.0"
   checksum: 10c0/a98a8e36ec18e11cae12ed925fdea52d5911dcccbcd505e9582eeb8a8d235f59801adfb874fab1f7949f4cceb09f6ef1a57b4e5fa91cb04bd50623b1a1a4e7c7
+  languageName: node
+  linkType: hard
+
+"@terascope/utils@npm:~1.8.3":
+  version: 1.8.3
+  resolution: "@terascope/utils@npm:1.8.3"
+  dependencies:
+    "@chainsafe/is-ip": "npm:~2.1.0"
+    "@terascope/types": "npm:~1.4.1"
+    "@turf/bbox": "npm:~7.2.0"
+    "@turf/bbox-polygon": "npm:~7.2.0"
+    "@turf/boolean-contains": "npm:~7.2.0"
+    "@turf/boolean-disjoint": "npm:~7.2.0"
+    "@turf/boolean-equal": "npm:~7.2.0"
+    "@turf/boolean-intersects": "npm:~7.2.0"
+    "@turf/boolean-point-in-polygon": "npm:~7.2.0"
+    "@turf/boolean-within": "npm:~7.2.0"
+    "@turf/circle": "npm:~7.2.0"
+    "@turf/helpers": "npm:~7.2.0"
+    "@turf/invariant": "npm:~7.2.0"
+    "@turf/line-to-polygon": "npm:~7.2.0"
+    "@types/lodash-es": "npm:~4.17.12"
+    "@types/validator": "npm:~13.12.3"
+    awesome-phonenumber: "npm:~7.5.0"
+    date-fns: "npm:~4.1.0"
+    date-fns-tz: "npm:~3.2.0"
+    datemath-parser: "npm:~1.0.6"
+    debug: "npm:~4.4.1"
+    geo-tz: "npm:~8.1.4"
+    ip-bigint: "npm:~8.2.1"
+    ip-cidr: "npm:~4.0.2"
+    ip6addr: "npm:~0.2.5"
+    ipaddr.js: "npm:~2.2.0"
+    is-cidr: "npm:~5.1.1"
+    is-plain-object: "npm:~5.0.0"
+    js-string-escape: "npm:~1.0.1"
+    kind-of: "npm:~6.0.3"
+    latlon-geohash: "npm:~2.0.0"
+    lodash-es: "npm:~4.17.21"
+    mnemonist: "npm:~0.40.3"
+    p-map: "npm:~7.0.3"
+    shallow-clone: "npm:~3.0.1"
+    validator: "npm:~13.12.0"
+  checksum: 10c0/95f5415f2a3d9f68eb1180d3c2467d78605c21372f0531a7114310bd92d4ab030d62a0b60b093fc240e96a562e80c1e5be8cf2fee2aa2eddbe69f09f8bfe36fb
   languageName: node
   linkType: hard
 
@@ -2252,7 +2296,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/validator@npm:~13.12.2":
+"@types/validator@npm:~13.12.2, @types/validator@npm:~13.12.3":
   version: 13.12.3
   resolution: "@types/validator@npm:13.12.3"
   checksum: 10c0/bc40191cd2e3c9b4b8d1f10611038ae3793462685366201940f2ef953b3229c02edcdb7c73cc5e6f762d5ecf1762a821afadaf97f71bd7fb06fae3aeb2729caf
@@ -3515,7 +3559,7 @@ __metadata:
   dependencies:
     "@terascope/data-mate": "npm:~1.8.3"
     "@terascope/job-components": "npm:~1.10.2"
-    "@terascope/teraslice-state-storage": "npm:~1.9.2"
+    "@terascope/teraslice-state-storage": "npm:~1.9.3"
     "@terascope/utils": "npm:~1.8.2"
     "@types/express": "npm:~5.0.3"
     express: "npm:~5.1.0"
