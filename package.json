@@ -42,7 +42,7 @@
         "@types/timsort": "~0.3.3",
         "eslint": "~9.30.0",
         "fs-extra": "~11.3.0",
-        "jest": "~30.0.3",
+        "jest": "~30.0.4",
         "jest-extended": "~6.0.0",
         "node-notifier": "~10.0.1",
         "semver": "~7.7.2",
