@@ -21,10 +21,10 @@
         "test": "yarn --cwd ../ test"
     },
     "dependencies": {
-        "@terascope/data-mate": "~1.8.4",
-        "@terascope/job-components": "~1.10.3",
-        "@terascope/teraslice-state-storage": "~1.9.3",
-        "@terascope/utils": "~1.8.3",
+        "@terascope/data-mate": "~1.9.3",
+        "@terascope/job-components": "~1.11.3",
+        "@terascope/teraslice-state-storage": "~1.10.3",
+        "@terascope/utils": "~1.9.3",
         "@types/express": "~5.0.3",
         "express": "~5.1.0",
         "tslib": "~2.8.1"
