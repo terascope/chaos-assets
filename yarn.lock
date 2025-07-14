@@ -1490,11 +1490,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@terascope/data-mate@npm:~1.9.3":
-  version: 1.9.3
-  resolution: "@terascope/data-mate@npm:1.9.3"
+"@terascope/data-mate@npm:~1.10.0":
+  version: 1.10.0
+  resolution: "@terascope/data-mate@npm:1.10.0"
   dependencies:
-    "@terascope/data-types": "npm:~1.9.3"
+    "@terascope/data-types": "npm:~1.10.0"
     "@terascope/types": "npm:~1.4.3"
     "@terascope/utils": "npm:~1.9.3"
     "@types/validator": "npm:~13.12.3"
@@ -1510,13 +1510,13 @@ __metadata:
     valid-url: "npm:~1.0.9"
     validator: "npm:~13.12.0"
     xlucene-parser: "npm:~1.9.3"
-  checksum: 10c0/972a37e8adf98ff12b80d99b92fb7fe93d527ef76b00eded04e16972126d52a55caadbdab970c9847abee84a27d70d572aa3d31f2b72f39e938307063e1595b3
+  checksum: 10c0/dec368054b6420a8102cf474aafe24fb8c268eb92ab05ef4927963c355737cf8f90156bd6a599e2e3928e40e54fadbf7961c3b88747fd9120704948f19aab763
   languageName: node
   linkType: hard
 
-"@terascope/data-types@npm:~1.9.3":
-  version: 1.9.3
-  resolution: "@terascope/data-types@npm:1.9.3"
+"@terascope/data-types@npm:~1.10.0":
+  version: 1.10.0
+  resolution: "@terascope/data-types@npm:1.10.0"
   dependencies:
     "@terascope/types": "npm:~1.4.3"
     "@terascope/utils": "npm:~1.9.3"
@@ -1524,7 +1524,7 @@ __metadata:
     yargs: "npm:~18.0.0"
   bin:
     data-types: ./bin/data-types.js
-  checksum: 10c0/35e6255e751e88821b3d1cce5ffc0016f463153e66428f0b9465985395dcd11256e097236ec708629c91ec78518a2724ec505bff0ea5294e2f010fa014a46d1e
+  checksum: 10c0/743c924f0d8adbd5ae3cf6f501c967e617dcb36a3f055f102d44f3625102d86121d366b198631fdb1bccaffe4c64e6f4841705d9cee82cc8b15b204dc3810263
   languageName: node
   linkType: hard
 
@@ -3501,7 +3501,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "chaos@workspace:asset"
   dependencies:
-    "@terascope/data-mate": "npm:~1.9.3"
+    "@terascope/data-mate": "npm:~1.10.0"
     "@terascope/job-components": "npm:~1.11.3"
     "@terascope/teraslice-state-storage": "npm:~1.10.3"
     "@terascope/utils": "npm:~1.9.3"
