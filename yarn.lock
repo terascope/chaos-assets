@@ -1528,15 +1528,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@terascope/elasticsearch-api@npm:~4.10.3":
-  version: 4.10.3
-  resolution: "@terascope/elasticsearch-api@npm:4.10.3"
+"@terascope/elasticsearch-api@npm:~4.11.0":
+  version: 4.11.0
+  resolution: "@terascope/elasticsearch-api@npm:4.11.0"
   dependencies:
     "@terascope/types": "npm:~1.4.3"
     "@terascope/utils": "npm:~1.9.3"
     bluebird: "npm:~3.7.2"
     setimmediate: "npm:~1.0.5"
-  checksum: 10c0/154b7844c838426f88abdc5c1e9710c88018acf03b54790f061553c89461283da6f241382aa3f46bfb6affaea7957abdd0d9fb3e1ed2fe40ea8ea4996fea4967
+  checksum: 10c0/bbdd9fa124bbcd9d0356b17866913772411483287d3e36ede744f5d8c0ff2e48a1c8195af64ee570f3d285726af7dde645df827417945bae37db3a4821fa3874
   languageName: node
   linkType: hard
 
@@ -1634,13 +1634,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@terascope/teraslice-state-storage@npm:~1.10.3":
-  version: 1.10.3
-  resolution: "@terascope/teraslice-state-storage@npm:1.10.3"
+"@terascope/teraslice-state-storage@npm:~1.11.0":
+  version: 1.11.0
+  resolution: "@terascope/teraslice-state-storage@npm:1.11.0"
   dependencies:
-    "@terascope/elasticsearch-api": "npm:~4.10.3"
+    "@terascope/elasticsearch-api": "npm:~4.11.0"
     "@terascope/utils": "npm:~1.9.3"
-  checksum: 10c0/edf5d3ddbfbd7ed62aa9bdf52bd133bd14d1ea656dabcf947a8cbfd27370c8bf13f4d62332b55946a72f70d231d7f04553f7c3f7000920e0cb584b6b727c91f6
+  checksum: 10c0/0461ad035ad41cab8acb11e7979fd6d84f8874b0bd85e0a2868665d73ea7b04428fc108d7b78d024c9a22eb114350c7f84824b56c02903494f32a75f1269fdf4
   languageName: node
   linkType: hard
 
@@ -3503,7 +3503,7 @@ __metadata:
   dependencies:
     "@terascope/data-mate": "npm:~1.9.3"
     "@terascope/job-components": "npm:~1.11.3"
-    "@terascope/teraslice-state-storage": "npm:~1.10.3"
+    "@terascope/teraslice-state-storage": "npm:~1.11.0"
     "@terascope/utils": "npm:~1.9.3"
     "@types/express": "npm:~5.0.3"
     express: "npm:~5.1.0"
