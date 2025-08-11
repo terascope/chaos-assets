@@ -22,7 +22,7 @@
     },
     "dependencies": {
         "@terascope/data-mate": "~1.10.0",
-        "@terascope/job-components": "~1.11.3",
+        "@terascope/job-components": "~1.12.1",
         "@terascope/teraslice-state-storage": "~1.11.1",
         "@terascope/utils": "~1.9.3",
         "@types/express": "~5.0.3",
