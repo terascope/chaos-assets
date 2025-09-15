@@ -6,11 +6,11 @@ updates:
       interval: weekly
       time: '04:00'
       timezone: US/Arizona
-    open-pull-requests-limit: 6
+    open-pull-requests-limit: 0
     assignees:
       - busma13
       - sotojn
-    ignore:
-      - dependency-name: '@types/node'
-        versions:
-          - '> 17.0.0'
+    # ignore:
+    #   - dependency-name: '@types/node'
+    #     versions:
+    #       - '> 17.0.0'
