@@ -21,7 +21,7 @@
         "test": "yarn --cwd ../ test"
     },
     "dependencies": {
-        "@terascope/data-mate": "~1.12.2",
+        "@terascope/data-mate": "~1.12.3",
         "@terascope/job-components": "~1.12.4",
         "@terascope/teraslice-state-storage": "~1.13.1",
         "@terascope/utils": "~1.10.4",
