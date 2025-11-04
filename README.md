@@ -1,6 +1,6 @@
 # chaos-assets
 
-> Teraslice chaos asset bundle
+> Teraslice chaos asset bundle. Used to intentionally create errors in teraslice jobs for testing and debugging.
 
 ## Getting Started
 
