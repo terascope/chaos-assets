@@ -8,6 +8,10 @@ import FaultySlicerFetcher from '../src/faulty_slicer/fetcher';
 import FaultySlicerSchema from '../src/faulty_slicer/schema';
 import FaultySlicerSlicer from '../src/faulty_slicer/slicer';
 
+import OomSlicerFetcher from '../src/oom_slicer/fetcher';
+import OomSlicerSchema from '../src/oom_slicer/schema';
+import OomSlicerSlicer from '../src/oom_slicer/slicer';
+
 export const ASSETS = {
     faulty_processor: {
         Processor: FaultyProcessor,
@@ -17,5 +21,10 @@ export const ASSETS = {
         Fetcher: FaultySlicerFetcher,
         Schema: FaultySlicerSchema,
         Slicer: FaultySlicerSlicer,
+    },
+    oom_slicer: {
+        Fetcher: OomSlicerFetcher,
+        Schema: OomSlicerSchema,
+        Slicer: OomSlicerSlicer,
     },
 };
