@@ -36,10 +36,9 @@ This example will cause the slicer to fail with an OOM error. Until then, it wil
 
 ```javascript
 Slice : {
-            id: '109156be-c4fb-41ea-b1b4-efe1671c5836,
-            foo: 'bar',
-        }
-
+    id: '109156be-c4fb-41ea-b1b4-efe1671c5836,
+    foo: 'bar',
+}
 ```
 
 The fetcher will then generate a batch of records based on the size specified in the job:
