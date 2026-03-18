@@ -2,5 +2,5 @@
     "name": "chaos",
     "version": "1.2.1",
     "description": "An asset bundle for developers",
-    "minimum_teraslice_version": "2.0.0"
+    "minimum_teraslice_version": "3.0.0"
 }
