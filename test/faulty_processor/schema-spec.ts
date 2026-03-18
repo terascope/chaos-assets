@@ -1,12 +1,12 @@
 import 'jest-extended';
 import { WorkerTestHarness } from 'teraslice-test-harness';
-import { AnyObject } from '@terascope/job-components';
+import { OpConfig } from '@terascope/job-components';
 import { FaultyProcessorConfig } from '../../asset/src/faulty_processor/interfaces.js';
 
 describe('faulty_processor schema', () => {
     let harness: WorkerTestHarness;
 
-    async function makeSchema(config: AnyObject = {}): Promise<FaultyProcessorConfig> {
+    async function makeSchema(config: Partial<OpConfig> = {}): Promise<FaultyProcessorConfig> {
         const name = 'faulty_processor';
         const opConfig = Object.assign({}, { _op: name }, config);
 

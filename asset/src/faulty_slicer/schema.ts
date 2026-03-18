@@ -1,10 +1,11 @@
 import {
-    ConvictSchema, AnyObject, ValidatedJobConfig,
+    BaseSchema, ValidatedJobConfig,
     getOpConfig
 } from '@terascope/job-components';
+import { Terafoundation } from '@terascope/types';
 import { FaultySlicer } from './interfaces.js';
 
-export default class Schema extends ConvictSchema<FaultySlicer> {
+export default class Schema extends BaseSchema<FaultySlicer> {
     validateJob(job: ValidatedJobConfig): void {
         const opConfig = getOpConfig(job, 'faulty_slicer');
         if (!opConfig) {
@@ -12,7 +13,7 @@ export default class Schema extends ConvictSchema<FaultySlicer> {
         }
     }
 
-    build(): AnyObject {
+    build(): Terafoundation.Schema<Omit<FaultySlicer, '_op'>> {
         return {
             size: {
                 doc: 'The amount of records to be generated per slice',

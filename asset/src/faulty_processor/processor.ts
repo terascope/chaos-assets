@@ -1,4 +1,5 @@
-import { ProcessorCore, DataEntity } from '@terascope/job-components';
+import { ProcessorCore } from '@terascope/job-components';
+import { DataEntity } from '@terascope/core-utils';
 import { FaultyProcessorConfig } from './interfaces.js';
 
 export default class FaultyProcessor extends ProcessorCore<FaultyProcessorConfig> {
