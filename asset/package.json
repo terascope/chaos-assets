@@ -1,7 +1,7 @@
 {
     "name": "chaos",
     "displayName": "Asset",
-    "version": "1.2.1",
+    "version": "2.0.0",
     "private": true,
     "description": "An asset bundle for developers",
     "repository": {
@@ -10,28 +10,22 @@
     },
     "license": "MIT",
     "type": "module",
-    "workspaces": {
-        "nohoist": [
-            "**"
-        ]
-    },
     "scripts": {
         "build": "tsc --project tsconfig.json",
-        "build:watch": "yarn build --watch",
-        "test": "yarn --cwd ../ test"
+        "build:watch": "pnpm build --watch",
+        "test": "pnpm -C ../ test"
     },
     "dependencies": {
-        "@terascope/data-mate": "~1.12.3",
-        "@terascope/job-components": "~1.12.4",
-        "@terascope/teraslice-state-storage": "~1.13.1",
-        "@terascope/utils": "~1.10.4",
+        "@terascope/core-utils": "^2.3.2",
+        "@terascope/data-mate": "~2.3.3",
+        "@terascope/job-components": "~2.3.2",
+        "@terascope/teraslice-state-storage": "~2.3.2",
         "@types/express": "~5.0.5",
-        "express": "~5.1.0",
+        "express": "~5.2.1",
         "tslib": "~2.8.1"
     },
     "engines": {
-        "node": ">=22.0.0",
-        "yarn": ">=1.22.19"
+        "node": ">=22.0.0"
     },
     "terascope": {}
 }

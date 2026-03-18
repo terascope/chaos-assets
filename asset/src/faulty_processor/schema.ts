@@ -1,10 +1,11 @@
 import {
-    ConvictSchema, AnyObject, ValidatedJobConfig,
+    BaseSchema, ValidatedJobConfig,
     getOpConfig
 } from '@terascope/job-components';
+import { Terafoundation } from '@terascope/types';
 import { FaultyProcessorConfig } from './interfaces.js';
 
-export default class Schema extends ConvictSchema<FaultyProcessorConfig> {
+export default class Schema extends BaseSchema<FaultyProcessorConfig> {
     validateJob(job: ValidatedJobConfig): void {
         const opConfig = getOpConfig(job, 'faulty_processor');
         if (!opConfig) {
@@ -15,7 +16,7 @@ export default class Schema extends ConvictSchema<FaultyProcessorConfig> {
         }
     }
 
-    build(): AnyObject {
+    build(): Terafoundation.Schema<Omit<FaultyProcessorConfig, '_op'>> {
         return {
             error_start: {
                 doc: 'The beginning range to start erroring slices on.',

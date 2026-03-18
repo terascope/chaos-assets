@@ -1,5 +1,5 @@
 import {
-    Fetcher, Context, AnyObject,
+    Fetcher, Context,
     ExecutionConfig
 } from '@terascope/job-components';
 import { FaultySlice, FaultySlicer } from './interfaces.js';
@@ -9,9 +9,9 @@ export default class FaultySlicerFetcher extends Fetcher<FaultySlicer> {
         super(context, opConfig, exConfig);
     }
 
-    async fetch(slice?: FaultySlice): Promise<AnyObject[]> {
+    async fetch(slice?: FaultySlice): Promise<Record<string, any>[]> {
         if (slice) {
-            const dataArray: AnyObject[] = [];
+            const dataArray: Record<string, any>[] = [];
             let recordNumber: number;
 
             if (slice.slice_number === 1) {

@@ -1,15 +1,35 @@
 import 'jest-extended';
 import { WorkerTestHarness } from 'teraslice-test-harness';
-import { AnyObject } from '@terascope/job-components';
+import { JobConfigParams, OpConfig } from '@terascope/job-components';
 import { FaultySlicer } from '../../asset/src/faulty_slicer/interfaces.js';
 
 describe('faulty_slicer schema', () => {
     let harness: WorkerTestHarness;
 
-    async function makeSchema(config: AnyObject = {}): Promise<FaultySlicer> {
+    async function makeSchema(config: Partial<OpConfig> = {}): Promise<FaultySlicer> {
         const name = 'faulty_slicer';
         const opConfig = Object.assign({}, { _op: name }, config);
-        harness = WorkerTestHarness.testFetcher(opConfig);
+        const job: JobConfigParams = {
+            name: 'test-job',
+            active: true,
+            analytics: false,
+            autorecover: false,
+            assets: [],
+            lifecycle: 'once',
+            max_retries: 0,
+            probation_window: 30000,
+            slicers: 1,
+            workers: 1,
+            env_vars: {},
+            apis: [],
+            operations: [
+                opConfig,
+                {
+                    _op: 'noop',
+                },
+            ],
+        };
+        harness = new WorkerTestHarness(job);
 
         await harness.initialize();
 
