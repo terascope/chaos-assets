@@ -8,6 +8,9 @@ importers:
 
   .:
     devDependencies:
+      '@terascope/core-utils':
+        specifier: ^2.3.2
+        version: 2.3.2
       '@terascope/eslint-config':
         specifier: ~1.1.26
         version: 1.1.30(jest@30.3.0(@types/node@25.5.0)(node-notifier@10.0.1))
@@ -17,6 +20,9 @@ importers:
       '@terascope/scripts':
         specifier: ~2.3.3
         version: 2.3.3(typescript@5.9.3)
+      '@terascope/types':
+        specifier: ^2.3.1
+        version: 2.3.1
       '@types/express':
         specifier: ~5.0.5
         version: 5.0.6
