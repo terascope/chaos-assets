@@ -21,6 +21,17 @@ export default class QueueBusterSlicer extends Slicer<KafkaQueueBusterConfig> {
         this.server = startServer(this.opConfig, this.logger);
     }
 
+    async shutdown(): Promise<void> {
+        await super.shutdown();
+        if (this.server) {
+            this.server.server.closeIdleConnections();
+            this.server.server.closeAllConnections();
+            await new Promise<void>((resolve) => {
+                this.server.server.close(() => resolve());
+            });
+        }
+    }
+
     isRecoverable(): boolean {
         return false;
     }

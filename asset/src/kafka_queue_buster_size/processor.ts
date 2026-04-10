@@ -18,6 +18,17 @@ export default class QueueBusterSizeProcessor extends MapProcessor<KafkaQueueBus
         this.server = startServer(this.opConfig);
     }
 
+    async shutdown(): Promise<void> {
+        await super.shutdown();
+        if (this.server) {
+            this.server.server.closeIdleConnections();
+            this.server.server.closeAllConnections();
+            await new Promise<void>((resolve) => {
+                this.server.server.close(() => resolve());
+            });
+        }
+    }
+
     handle(input: DataEntity[]): Promise<DataEntity[]> {
         this.sliceNumber++;
         return super.handle(input);
