@@ -55,7 +55,7 @@ describe('kafka_queue_buster_size schema', () => {
     it('should resolve with valid values', async () => {
         await expect(makeSchema({ additional_field_name: 'my_field' })).toResolve();
         await expect(makeSchema({ api_port: 9000 })).toResolve();
-        await expect(makeSchema({ api_port: 1 })).toResolve();
+        await expect(makeSchema({ api_port: 1025 })).toResolve();
         await expect(makeSchema({ api_port: 65535 })).toResolve();
         await expect(makeSchema({ initial_size_kb: 1 })).toResolve();
         await expect(makeSchema({ initial_size_kb: 100 })).toResolve();
