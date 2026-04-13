@@ -1,11 +1,13 @@
 # kafka_queue_buster_generator
 
-This operation will generate slices whose configuration can be updated while the job is processing. The intended workflow is for a job spec to contain reasonable `initial_lenght` or `initial_size_kb` settings that will not cause queue full errors. When the job starts, an express server will be created on the execution controller. The server API allows for slices to be modified as the job progresses to have larger records, more records, or a specific amount of slices produced. Updating the `length` or `size_kb` will create new slices with more records or larger records. The execution controller slice queue is limited to 5 records, so there will be a small delay while the old slices are processed before new slices created with an updated configuration will be able to affect the producer queue. After a queue full error is triggered the configuration can be returned to something reasonable to allow the job to return to a normal state and continue processing records.
+This operation will generate slices whose configuration can be updated while the job is processing.
 
 Records will have the following fields:
 
 - an `id` field consisting of slice number and record number: `205 3245`.
 - a `longString` field which will be the `id` padded with the proper amount of whitespace to create a string of `size_kb`.
+
+ The intended workflow is for a job spec to contain reasonable `initial_length` or `initial_size_kb` settings that will not cause queue full errors. When the job starts, each record on the slice will include a `longString` field of `initial_size_kb` and `initial_length` records will be added to each slice. An express server will be created on the execution controller. The server API allows for slices to be modified as the job progresses to have larger records, more records, or a specific amount of slices produced. Updating the `length` or `size_kb` will create new slices with more records or larger records. The execution controller slice queue is limited to 5 records, so there will be a small delay while the old slices are processed before new slices created with an updated configuration will be able to affect the producer queue. After a queue full error is triggered the configuration can be returned to something reasonable to allow the job to return to a normal state and continue processing records.
 
  Adjusting `total_slices` allows a persistent job to idle at a certain slice count while adjustments are made to `length` or `size_kb` before continuing a test. Reaching `total_slices` will cause a once job to complete.
 
