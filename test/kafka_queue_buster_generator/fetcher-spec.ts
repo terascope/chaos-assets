@@ -3,11 +3,11 @@ import { JobConfigParams } from '@terascope/job-components';
 import { WorkerTestHarness } from 'teraslice-test-harness';
 import { QueueBusterSliceRequest } from '../../asset/src/kafka_queue_buster_generator/interfaces.js';
 
-describe('kafka_queue_buster_reader fetcher', () => {
+describe('kafka_queue_buster_generator fetcher', () => {
     let harness: WorkerTestHarness;
 
     async function makeTest(config: Record<string, any> = {}) {
-        const opConfig = Object.assign({}, { _op: 'kafka_queue_buster_reader' }, config);
+        const opConfig = Object.assign({}, { _op: 'kafka_queue_buster_generator' }, config);
         const job: JobConfigParams = {
             name: 'test-job',
             active: true,

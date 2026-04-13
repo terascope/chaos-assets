@@ -4,13 +4,13 @@ import { QueueBusterSliceRequest } from '../../asset/src/kafka_queue_buster_gene
 // Use ports in a range unlikely to conflict with other tests
 let portCounter = 19300;
 
-describe('kafka_queue_buster_reader slicer', () => {
+describe('kafka_queue_buster_generator slicer', () => {
     let harness: SlicerTestHarness;
 
     async function makeTest(config: Record<string, any> = {}) {
         const opConfig = Object.assign(
             {},
-            { _op: 'kafka_queue_buster_reader', api_port: portCounter++ },
+            { _op: 'kafka_queue_buster_generator', api_port: portCounter++ },
             config
         );
         const job = newTestJobConfig({

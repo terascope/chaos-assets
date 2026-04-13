@@ -3,11 +3,11 @@ import { JobConfigParams } from '@terascope/job-components';
 import { WorkerTestHarness } from 'teraslice-test-harness';
 import { KafkaQueueBusterConfig } from '../../asset/src/kafka_queue_buster_generator/interfaces.js';
 
-describe('kafka_queue_buster_reader schema', () => {
+describe('kafka_queue_buster_generator schema', () => {
     let harness: WorkerTestHarness;
 
     async function makeSchema(config: Record<string, any> = {}): Promise<KafkaQueueBusterConfig> {
-        const name = 'kafka_queue_buster_reader';
+        const name = 'kafka_queue_buster_generator';
         const opConfig = Object.assign({}, { _op: name }, config);
         const job: JobConfigParams = {
             name: 'test-job',
