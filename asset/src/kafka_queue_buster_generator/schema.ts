@@ -7,9 +7,9 @@ import { KafkaQueueBusterConfig } from './interfaces.js';
 
 export default class Schema extends BaseSchema<KafkaQueueBusterConfig> {
     validateJob(job: ValidatedJobConfig): void {
-        const opConfig = getOpConfig(job, 'kafka_queue_buster_reader');
+        const opConfig = getOpConfig(job, 'kafka_queue_buster_generator');
         if (!opConfig) {
-            throw new Error('No opConfig was found for operation kafka_queue_buster_reader on the job');
+            throw new Error('No opConfig was found for operation kafka_queue_buster_generator on the job');
         }
     }
 
@@ -20,9 +20,9 @@ export default class Schema extends BaseSchema<KafkaQueueBusterConfig> {
                 default: 10,
                 format(val: any) {
                     if (!Number.isInteger(val)) {
-                        throw new Error('Invalid initial_size_kb parameter for queue_buster_reader, must be a number');
+                        throw new Error('Invalid initial_size_kb parameter for queue_buster_generator, must be a number');
                     } else if (val <= 0) {
-                        throw new Error('Invalid initial_size_kb parameter for queue_buster_reader, must be greater than zero');
+                        throw new Error('Invalid initial_size_kb parameter for queue_buster_generator, must be greater than zero');
                     }
                 }
             },
@@ -31,9 +31,9 @@ export default class Schema extends BaseSchema<KafkaQueueBusterConfig> {
                 default: 5000,
                 format(val: any) {
                     if (!Number.isInteger(val)) {
-                        throw new Error('Invalid initial_length parameter for queue_buster_reader, must be a number');
+                        throw new Error('Invalid initial_length parameter for queue_buster_generator, must be a number');
                     } else if (val <= 0) {
-                        throw new Error('Invalid initial_length parameter for queue_buster_reader, must be greater than zero');
+                        throw new Error('Invalid initial_length parameter for queue_buster_generator, must be greater than zero');
                     }
                 }
             },
@@ -42,7 +42,7 @@ export default class Schema extends BaseSchema<KafkaQueueBusterConfig> {
                 default: 8888,
                 format(val: any) {
                     if (!Number.isInteger(val) || val < 1 || val > 65535) {
-                        throw new Error('Invalid api_port parameter for queue_buster_reader, must be an integer between 1 and 65535');
+                        throw new Error('Invalid api_port parameter for queue_buster_generator, must be an integer between 1 and 65535');
                     }
                 }
             },
@@ -54,7 +54,7 @@ export default class Schema extends BaseSchema<KafkaQueueBusterConfig> {
                 format(val: any) {
                     if (val === null || val === undefined) return;
                     if (!Number.isInteger(val) || val < 0) {
-                        throw new Error('Invalid initial_total_slices parameter for queue_buster_reader, must be an integer 0 or greater, null, or undefined');
+                        throw new Error('Invalid initial_total_slices parameter for queue_buster_generator, must be an integer 0 or greater, null, or undefined');
                     }
                 }
             }

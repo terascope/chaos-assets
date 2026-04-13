@@ -1,5 +1,5 @@
 import { SlicerTestHarness, newTestJobConfig } from 'teraslice-test-harness';
-import { QueueBusterSliceRequest } from '../../asset/src/kafka_queue_buster_reader/interfaces.js';
+import { QueueBusterSliceRequest } from '../../asset/src/kafka_queue_buster_generator/interfaces.js';
 
 // Use ports in a range unlikely to conflict with other tests
 let portCounter = 19300;

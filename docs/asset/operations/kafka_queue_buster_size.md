@@ -4,7 +4,7 @@ This processor allows an additional field of a certain size to be added to each 
 
 This processor is designed to trigger queue full errors in a kafka producer. The job should use an `initial_size_kb` that is less than the librdkafka `message.max.bytes` and when multiplied by the slice size from the reader is less than librdkafka `queue.buffering.max.kbytes`. Once the job is running and processing slices effectively, the API can be used to increase the `size_kb` of each record and trigger a queue full error (each record is large enough that new records in the slice can be added to the queue faster than they can be written to the broker, causing `queue.buffering.max.kbytes` to be reached).
 
- **WARNING**: The wrong combination of settings may cause NodeJS `heap out of memory` errors. You may want to increase NodeJS `max-old-space-size`.
+ **WARNING**: The wrong combination of settings may cause NodeJS `heap out of memory` errors. You may want to increase worker `resources_limits_memory`.
 
 ## Configuration
 
@@ -21,9 +21,8 @@ This processor is designed to trigger queue full errors in a kafka producer. The
     "name": "test-queue-buster-size-processor",
     "lifecycle": "persistent",
     "workers": 1,
-    "env_vars": {
-        "NODE_OPTIONS": "--max-old-space-size=8192"
-    },
+    "resources_requests_memory": 1073741824,
+    "resources_limits_memory": 3221225472,
     "assets": [
         "chaos",
         "kafka"

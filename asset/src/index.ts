@@ -8,9 +8,9 @@ import FaultySlicerFetcher from '../src/faulty_slicer/fetcher';
 import FaultySlicerSchema from '../src/faulty_slicer/schema';
 import FaultySlicerSlicer from '../src/faulty_slicer/slicer';
 
-import KafkaQueueBusterReaderFetcher from '../src/kafka_queue_buster_reader/fetcher';
-import KafkaQueueBusterReaderSchema from '../src/kafka_queue_buster_reader/schema';
-import KafkaQueueBusterReaderSlicer from '../src/kafka_queue_buster_reader/slicer';
+import KafkaQueueBusterReaderFetcher from './kafka_queue_buster_generator/fetcher';
+import KafkaQueueBusterReaderSchema from './kafka_queue_buster_generator/schema';
+import KafkaQueueBusterReaderSlicer from './kafka_queue_buster_generator/slicer';
 
 import KafkaQueueBusterSize from '../src/kafka_queue_buster_size/processor';
 import KafkaQueueBusterSizeSchema from '../src/kafka_queue_buster_size/schema';
