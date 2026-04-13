@@ -26,7 +26,7 @@ Any manual changes will be lost next time this gets auto-generated. -->
 
 - [faulty_processor](./docs/asset/operations/faulty_processor)
 - [faulty_slicer](./docs/asset/operations/faulty_slicer)
-- [kafka_queue_buster_reader](./docs/asset/operations/kafka_queue_buster_reader)
+- [kafka_queue_buster_generator](./docs/asset/operations/kafka_queue_buster_generator)
 - [kafka_queue_buster_size](./docs/asset/operations/kafka_queue_buster_size)
 
 ## Contributing

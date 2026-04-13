@@ -8,9 +8,9 @@ import FaultySlicerFetcher from '../src/faulty_slicer/fetcher';
 import FaultySlicerSchema from '../src/faulty_slicer/schema';
 import FaultySlicerSlicer from '../src/faulty_slicer/slicer';
 
-import KafkaQueueBusterReaderFetcher from './kafka_queue_buster_generator/fetcher';
-import KafkaQueueBusterReaderSchema from './kafka_queue_buster_generator/schema';
-import KafkaQueueBusterReaderSlicer from './kafka_queue_buster_generator/slicer';
+import KafkaQueueBusterGeneratorFetcher from '../src/kafka_queue_buster_generator/fetcher';
+import KafkaQueueBusterGeneratorSchema from '../src/kafka_queue_buster_generator/schema';
+import KafkaQueueBusterGeneratorSlicer from '../src/kafka_queue_buster_generator/slicer';
 
 import KafkaQueueBusterSize from '../src/kafka_queue_buster_size/processor';
 import KafkaQueueBusterSizeSchema from '../src/kafka_queue_buster_size/schema';
@@ -25,10 +25,10 @@ export const ASSETS = {
         Schema: FaultySlicerSchema,
         Slicer: FaultySlicerSlicer,
     },
-    kafka_queue_buster_reader: {
-        Fetcher: KafkaQueueBusterReaderFetcher,
-        Schema: KafkaQueueBusterReaderSchema,
-        Slicer: KafkaQueueBusterReaderSlicer,
+    kafka_queue_buster_generator: {
+        Fetcher: KafkaQueueBusterGeneratorFetcher,
+        Schema: KafkaQueueBusterGeneratorSchema,
+        Slicer: KafkaQueueBusterGeneratorSlicer,
     },
     kafka_queue_buster_size: {
         Processor: KafkaQueueBusterSize,
