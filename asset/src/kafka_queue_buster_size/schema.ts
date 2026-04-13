@@ -25,7 +25,7 @@ export default class Schema extends BaseSchema<KafkaQueueBusterSizeConfig> {
                 default: 8888,
                 format(val: any) {
                     if (!Number.isInteger(val) || val < 1 || val > 65535) {
-                        throw new Error('Invalid api_port parameter for queue_buster_reader, must be an integer between 1 and 65535');
+                        throw new Error('Invalid api_port parameter for kafka_queue_buster_size, must be an integer between 1 and 65535');
                     }
                 }
             },
@@ -34,9 +34,9 @@ export default class Schema extends BaseSchema<KafkaQueueBusterSizeConfig> {
                 default: 10,
                 format(val: any) {
                     if (!Number.isInteger(val)) {
-                        throw new Error('Invalid initial_size_kb parameter for queue_buster_reader, must be a number');
+                        throw new Error('Invalid initial_size_kb parameter for kafka_queue_buster_size, must be a number');
                     } else if (val <= 0) {
-                        throw new Error('Invalid initial_size_kb parameter for queue_buster_reader, must be greater than zero');
+                        throw new Error('Invalid initial_size_kb parameter for kafka_queue_buster_size, must be greater than zero');
                     }
                 }
             }
