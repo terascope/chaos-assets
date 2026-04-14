@@ -82,6 +82,6 @@ echo -e "GET /factor HTTP/1.0\r\nHost: localhost\r\n\r\n" | nc localhost 8888
 If running in docker or kubernetes you must first `exec` into the worker pod, then use netcat to make an API request.
 
 ```bash
-echo -e "POST /factor/500 HTTP/1.0\r\nHost: localhost\r\n\r\n" | nc localhost 8888
-{"replication_factor":500}
+echo -e "POST /factor/3 HTTP/1.0\r\nHost: localhost\r\n\r\n" | nc localhost 8888
+{"replication_factor":3}
 ```
