@@ -52,7 +52,6 @@ export default class QueueBusterLengthProcessor extends BatchProcessor<
             }
         });
 
-        console.log('Replicated data array length: ', replicatedData.length);
         return replicatedData;
     }
 }
