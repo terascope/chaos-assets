@@ -10,7 +10,7 @@ export function startServer(opConfig: KafkaQueueBusterSizeConfig) {
     let currentSizeKb = opConfig.initial_size_kb;
 
     app.get('/', (_req, res) => {
-        res.send('Queue Buster server');
+        res.send('Queue Buster Size server');
     });
 
     app.get('/size', (_req, res) => {
@@ -28,11 +28,11 @@ export function startServer(opConfig: KafkaQueueBusterSizeConfig) {
     });
 
     const server = app.listen(port, () => {
-        console.warn(`Queue buster app listening on port ${port}`);
+        console.warn(`Queue Buster Size app listening on port ${port}`);
     });
 
     server.on('error', (err) => {
-        console.error(`Queue buster server failed to start: ${err.message}`);
+        console.error(`Queue Buster Size server failed to start: ${err.message}`);
         throw err;
     });
 

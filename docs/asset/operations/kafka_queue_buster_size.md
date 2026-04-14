@@ -2,7 +2,7 @@
 
 This processor allows an additional field of a certain size to be added to each record of a slice. The field will be a string that begins with the slice number and index from the DataEntity array followed by the appropriate amount of whitespace to reach the size requested. An express server on the worker can be used to get the current size of the field or set the size of the field for subsequent slices.
 
-This processor is designed to trigger queue full errors in a kafka producer. The job should use an `initial_size_kb` that is less than the librdkafka `message.max.bytes` and when multiplied by the slice size from the reader is less than librdkafka `queue.buffering.max.kbytes`. Once the job is running and processing slices effectively, the API can be used to increase the `size_kb` of each record and trigger a queue full error (each record is large enough that new records in the slice can be added to the queue faster than they can be written to the broker, causing `queue.buffering.max.kbytes` to be reached).
+This processor is designed to trigger queue full errors related to queue size in a kafka producer. The job should use an `initial_size_kb` that is less than the librdkafka `message.max.bytes` and when multiplied by the slice size from the reader is less than librdkafka `queue.buffering.max.kbytes`. Once the job is running and processing slices effectively, the API can be used to increase the `size_kb` of each record and trigger a queue full error (each record is large enough that new records in the slice can be added to the queue faster than they can be written to the broker, causing `queue.buffering.max.kbytes` to be reached).
 
  **WARNING**: The wrong combination of settings may cause NodeJS `heap out of memory` errors. You may want to increase worker `resources_limits_memory`.
 
@@ -67,19 +67,18 @@ This processor is designed to trigger queue full errors in a kafka producer. The
 
 ## Get current size
 
-If running in docker or kubernetes you will first `exec` into the worker pod.
+If running in docker or kubernetes you must first `exec` into the worker pod, then use netcat to make an API request.
 
 ```bash
-apk add curl # teraslice worker does not include curl by default
-curl localhost:8888/size
+echo -e "GET /size HTTP/1.0\r\nHost: localhost\r\n\r\n" | nc localhost 8888
 {"size_kb":10}
 ```
 
 ## Update size
 
-If running in docker or kubernetes you will first `exec` into the worker pod.
+If running in docker or kubernetes you must first `exec` into the worker pod, then use netcat to make an API request.
 
 ```bash
-apk add curl # teraslice worker does not include curl by default
-curl -X POST http://localhost:8888/size/500
+echo -e "POST /size/500 HTTP/1.0\r\nHost: localhost\r\n\r\n" | nc localhost 8888
+{"size_kb":500}
 ```

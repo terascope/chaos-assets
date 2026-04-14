@@ -12,6 +12,9 @@ import KafkaQueueBusterGeneratorFetcher from '../src/kafka_queue_buster_generato
 import KafkaQueueBusterGeneratorSchema from '../src/kafka_queue_buster_generator/schema';
 import KafkaQueueBusterGeneratorSlicer from '../src/kafka_queue_buster_generator/slicer';
 
+import KafkaQueueBusterLength from '../src/kafka_queue_buster_length/processor';
+import KafkaQueueBusterLengthSchema from '../src/kafka_queue_buster_length/schema';
+
 import KafkaQueueBusterSize from '../src/kafka_queue_buster_size/processor';
 import KafkaQueueBusterSizeSchema from '../src/kafka_queue_buster_size/schema';
 
@@ -29,6 +32,10 @@ export const ASSETS = {
         Fetcher: KafkaQueueBusterGeneratorFetcher,
         Schema: KafkaQueueBusterGeneratorSchema,
         Slicer: KafkaQueueBusterGeneratorSlicer,
+    },
+    kafka_queue_buster_length: {
+        Processor: KafkaQueueBusterLength,
+        Schema: KafkaQueueBusterLengthSchema,
     },
     kafka_queue_buster_size: {
         Processor: KafkaQueueBusterSize,

@@ -13,34 +13,32 @@ Records will have the following fields:
 
  **WARNING**: The wrong combination of settings may cause NodeJS `heap out of memory` errors. You may want to increase worker `resources_limits_memory`.
 
-## Get current length, size, or total_slices
+## Get current length, size, total_slices, or all
 
-If running in docker or kubernetes you will first `exec` into the execution controller pod.
+If running in docker or kubernetes you will first `exec` into the execution controller pod, then use netcat to make an API request.
 
 ```bash
-apk add curl # teraslice exc does not include curl by default
-curl localhost:8888/size
+echo -e "GET /size HTTP/1.0\r\nHost: localhost\r\n\r\n" | nc localhost 8888
 {"size_kb":10}
 
-curl localhost:8888/length
+echo -e "GET /length HTTP/1.0\r\nHost: localhost\r\n\r\n" | nc localhost 8888
 {"length":1000}
 
-curl localhost:8888/total_slices
+echo -e "GET /total_slices HTTP/1.0\r\nHost: localhost\r\n\r\n" | nc localhost 8888
 {"total_slices":5000}
 
-curl localhost:8888
+echo -e "GET / HTTP/1.0\r\nHost: localhost\r\n\r\n" | nc localhost 8888
 {"length":1000,"size_kb":10,"total_slices":5000}
 ```
 
 ## Update length, size, or total_slices
 
-If running in docker or kubernetes you will first `exec` into the execution controller pod.
+If running in docker or kubernetes you will first `exec` into the execution controller pod, then use netcat to make an API request.
 
 ```bash
-apk add curl # teraslice exc does not include curl by default
-curl -X POST http://localhost:8888/length/5000
-curl -X POST http://localhost:8888/size/500
-curl -X POST http://localhost:8888/total_slices/10
+echo -e "POST /length/5000 HTTP/1.0\r\nHost: localhost\r\n\r\n" | nc localhost 8888
+echo -e "POST /size/500 HTTP/1.0\r\nHost: localhost\r\n\r\n" | nc localhost 8888
+echo -e "POST /total_slices/10 HTTP/1.0\r\nHost: localhost\r\n\r\n" | nc localhost 8888
 ```
 
 ## Configuration

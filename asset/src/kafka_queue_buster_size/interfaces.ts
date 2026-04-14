@@ -12,8 +12,3 @@ export interface QueueBusterSizeServer {
     getSize(): number;
     setSize(val: number): void;
 }
-
-export interface QueueBusterSizeSliceRequest {
-    sliceSizeKb: number;
-    sliceNumber: number;
-}
