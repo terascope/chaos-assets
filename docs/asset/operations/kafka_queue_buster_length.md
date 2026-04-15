@@ -73,6 +73,11 @@ This processor is designed to trigger queue full errors related to queue length 
 If running in docker or kubernetes you must first `exec` into the worker pod, then use netcat to make an API request.
 
 ```bash
+# teraslice v3.5.3 or greater
+curl -XGET "localhost:8888/factor"
+{"replication_factor":10}
+
+# teraslice v 3.0.0 to v3.5.2
 echo -e "GET /factor HTTP/1.0\r\nHost: localhost\r\n\r\n" | nc localhost 8888
 {"replication_factor":10}
 ```
@@ -82,6 +87,11 @@ echo -e "GET /factor HTTP/1.0\r\nHost: localhost\r\n\r\n" | nc localhost 8888
 If running in docker or kubernetes you must first `exec` into the worker pod, then use netcat to make an API request.
 
 ```bash
+# teraslice v3.5.3 or greater
+curl -XPOST "localhost:8888/factor/3"
+{"replication_factor":3}
+
+# teraslice v 3.0.0 to v3.5.2
 echo -e "POST /factor/3 HTTP/1.0\r\nHost: localhost\r\n\r\n" | nc localhost 8888
 {"replication_factor":3}
 ```

@@ -18,6 +18,21 @@ Records will have the following fields:
 If running in docker or kubernetes you will first `exec` into the execution controller pod, then use netcat to make an API request.
 
 ```bash
+# teraslice v3.5.3 or greater
+curl -XGET "localhost:8888/size"
+{"size_kb":10}
+
+curl -XGET "localhost:8888/length"
+{"length":1000}
+
+curl -XGET "localhost:8888/total_slices"
+{"total_slices":5000}
+
+curl -XGET "localhost:8888"
+{"length":1000,"size_kb":10,"total_slices":5000}
+
+
+# teraslice v 3.0.0 to v3.5.2
 echo -e "GET /size HTTP/1.0\r\nHost: localhost\r\n\r\n" | nc localhost 8888
 {"size_kb":10}
 
@@ -36,6 +51,12 @@ echo -e "GET / HTTP/1.0\r\nHost: localhost\r\n\r\n" | nc localhost 8888
 If running in docker or kubernetes you will first `exec` into the execution controller pod, then use netcat to make an API request.
 
 ```bash
+# teraslice v3.5.3 or greater
+curl -XPOST "localhost:8888/length/5000"
+curl -XPOST "localhost:8888/size/500"
+curl -XPOST "localhost:8888/total_slices/10"
+
+# teraslice v 3.0.0 to v3.5.2
 echo -e "POST /length/5000 HTTP/1.0\r\nHost: localhost\r\n\r\n" | nc localhost 8888
 echo -e "POST /size/500 HTTP/1.0\r\nHost: localhost\r\n\r\n" | nc localhost 8888
 echo -e "POST /total_slices/10 HTTP/1.0\r\nHost: localhost\r\n\r\n" | nc localhost 8888
