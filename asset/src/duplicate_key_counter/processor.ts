@@ -1,17 +1,22 @@
 import { DataEntity } from '@terascope/core-utils';
 import { BatchProcessor } from '@terascope/job-components';
-import { putS3Object, S3Client } from '@terascope/file-asset-apis';
+import { putS3Object, S3Client, doesBucketExist, createS3Bucket } from '@terascope/file-asset-apis';
 import { DuplicateKeyCounterConfig } from './interfaces.js';
+
 
 /**
  * DuplicateKeyCounter is a pass-through BatchProcessor that counts how often each
  * unique value of a configured field (`track_field`) appears across all records
  * it processes. It does NOT filter or modify the data stream — every record is
- * returned unchanged. Instead, it accumulates counts in memory and periodically
- * writes a JSON dedup report to a configured S3 key, overwriting the same key
- * on each flush so the report always reflects cumulative totals.
+ * returned unchanged.
  *
- * Flushing is triggered by either:
+ * Two output modes are supported via `report_target`:
+ *   - "console" (default): logs a truncated duplicate summary to the logger after
+ *     every slice. No S3 connection is required.
+ *   - "s3": writes a full JSON report to a configured S3 key, overwriting it on
+ *     each flush so the object always holds the latest cumulative snapshot.
+ *
+ * Flushing (s3 mode only) is triggered by either:
  *   - count-based: every `report_interval` slices (if > 0)
  *   - time-based:  whenever `report_interval_ms` ms have elapsed since the last
  *                  flush (if > 0)
@@ -30,13 +35,25 @@ export default class DuplicateKeyCounter extends BatchProcessor<DuplicateKeyCoun
 
     async initialize(): Promise<void> {
         await super.initialize();
-        // Obtain a cached S3 client from the Terafoundation connection registry
-        const { client: s3Client } = await this.context.apis.foundation.createClient({
-            endpoint: this.opConfig._connection,
-            type: 's3',
-            cached: true
-        });
-        this.s3Client = s3Client;
+
+        if (this.opConfig.report_target === 's3') {
+            // Obtain a cached S3 client from the Terafoundation connection registry
+            const { client: s3Client } = await this.context.apis.foundation.createClient({
+                endpoint: this.opConfig._connection,
+                type: 's3',
+                cached: true
+            });
+            this.s3Client = s3Client;
+
+            const bucket = this.opConfig.s3_bucket;
+            const exists = await doesBucketExist(this.s3Client, { Bucket: bucket });
+            if (!exists) {
+                this.logger.info(`duplicate_key_counter: bucket "${bucket}" not found, attempting to create it`);
+                await createS3Bucket(this.s3Client, { Bucket: bucket });
+                this.logger.info(`duplicate_key_counter: bucket "${bucket}" created`);
+            }
+        }
+
         // Parse the comma-separated record_fields config once at init time
         if (this.opConfig.record_fields) {
             this.recordFields = this.opConfig.record_fields.split(',').map((f) => f.trim())
@@ -78,18 +95,22 @@ export default class DuplicateKeyCounter extends BatchProcessor<DuplicateKeyCoun
 
         this.slicesProcessed++;
 
-        // Count-based flush: trigger after every N slices when report_interval is set
-        const countFlush = this.opConfig.report_interval > 0
-            && this.slicesProcessed % this.opConfig.report_interval === 0;
+        if (this.opConfig.report_target === 'console') {
+            this.logConsoleSummary();
+        } else {
+            // Count-based flush: trigger after every N slices when report_interval is set
+            const countFlush = this.opConfig.report_interval > 0
+                && this.slicesProcessed % this.opConfig.report_interval === 0;
 
-        // Time-based flush: trigger if enough wall-clock time has passed since the last write
-        const timeoutFlush = this.opConfig.report_interval_ms > 0
-            && (Date.now() - this.lastFlushTime) >= this.opConfig.report_interval_ms;
+            // Time-based flush: trigger if enough wall-clock time has passed since the last write
+            const timeoutFlush = this.opConfig.report_interval_ms > 0
+                && (Date.now() - this.lastFlushTime) >= this.opConfig.report_interval_ms;
 
-        if (countFlush || timeoutFlush) {
-            await this.writeReport();
-            // reset the timer whether flush was triggered by count or timeout
-            this.lastFlushTime = Date.now();
+            if (countFlush || timeoutFlush) {
+                await this.writeReport();
+                // reset the timer whether flush was triggered by count or timeout
+                this.lastFlushTime = Date.now();
+            }
         }
 
         // Pass the slice through unmodified — this processor is observation-only
@@ -97,9 +118,35 @@ export default class DuplicateKeyCounter extends BatchProcessor<DuplicateKeyCoun
     }
 
     async shutdown(): Promise<void> {
-        // Always write a final report on shutdown to capture any un-flushed counts
-        await this.writeReport();
+        if (this.opConfig.report_target === 's3') {
+            // Always write a final report on shutdown to capture any un-flushed counts
+            await this.writeReport();
+        }
         await super.shutdown();
+    }
+
+    /**
+     * Logs a concise duplicate summary to the Teraslice logger.
+     * Only the top CONSOLE_MAX_ENTRIES duplicates (by count) are included to
+     * keep the log line readable. A trailing note is appended when entries are
+     * omitted.
+     */
+    private logConsoleSummary(): void {
+        const duplicates: Array<{ value: string; count: number }> = [];
+        for (const [value, { count }] of this.counts) {
+            if (count > 1) duplicates.push({ value, count });
+        }
+        duplicates.sort((a, b) => b.count - a.count);
+
+        const shown = duplicates.slice(0, this.opConfig.console_max_entries);
+        const omitted = duplicates.length - shown.length;
+        const suffix = omitted > 0 ? ` ... and ${omitted} more` : '';
+
+        this.logger.info(
+            `duplicate_key_counter [slice ${this.slicesProcessed}] `
+            + `unique=${this.counts.size} duplicates=${duplicates.length}${suffix}: `
+            + JSON.stringify(shown)
+        );
     }
 
     /**
