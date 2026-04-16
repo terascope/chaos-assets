@@ -57,7 +57,9 @@ describe('duplicate_key_counter processor', () => {
         return values.map((v) => DataEntity.make(v != null ? { [field]: v } : {}));
     }
 
-    async function makeConsoleTest(config: Record<string, unknown> = {}): Promise<WorkerTestHarness> {
+    async function makeConsoleTest(
+        config: Record<string, unknown> = {}
+    ): Promise<WorkerTestHarness> {
         const opConfig = {
             _op: 'duplicate_key_counter',
             track_field: 'id',

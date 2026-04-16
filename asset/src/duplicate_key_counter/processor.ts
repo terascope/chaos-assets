@@ -3,7 +3,6 @@ import { BatchProcessor } from '@terascope/job-components';
 import { putS3Object, S3Client, doesBucketExist, createS3Bucket } from '@terascope/file-asset-apis';
 import { DuplicateKeyCounterConfig } from './interfaces.js';
 
-
 /**
  * DuplicateKeyCounter is a pass-through BatchProcessor that counts how often each
  * unique value of a configured field (`track_field`) appears across all records
