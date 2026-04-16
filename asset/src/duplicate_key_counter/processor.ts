@@ -59,12 +59,16 @@ export default class DuplicateKeyCounter extends BatchProcessor<DuplicateKeyCoun
             this.recordFields = this.opConfig.record_fields.split(',').map((f) => f.trim())
                 .filter(Boolean);
         }
-        // Seed the flush timer so the first interval is measured from job start
-        this.lastFlushTime = Date.now();
     }
 
     async onBatch(slice: DataEntity[]): Promise<DataEntity[]> {
         const field = this.opConfig.track_field;
+
+        // Start the timer on the first slice so the interval counts from when
+        // data starts flowing, not from when the job was set up
+        if (this.lastFlushTime === 0) {
+            this.lastFlushTime = Date.now();
+        }
 
         // Accumulate value frequencies from this slice into the running totals
         for (const record of slice) {
