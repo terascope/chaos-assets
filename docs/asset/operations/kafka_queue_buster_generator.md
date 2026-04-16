@@ -66,10 +66,10 @@ echo -e "POST /total_slices/10 HTTP/1.0\r\nHost: localhost\r\n\r\n" | nc localho
 
 | Field | Type | Default | Description |
 | --- | --- | --- | --- |
-| `initial_size_kb` | Integer | `10` | Approximate size in KB to make initial records. Must be greater than zero. |
-| `initial_length` | Integer | `5000` | Slice length - the amount of records to be generated per initial slice. Must be greater than zero. |
 | `api_port` | Integer | `8888` | Host port of the API server. Must be an integer between 1 and 65535. |
 | `initial_total_slices` | Integer \| null | `null` | The initial total number of slices to produce. Useful to end a `once` job. For a `persistent` job this can be left as `null`, or if set the job will idle once reached. If updated, the job will continue until the new total is reached. Must be an integer >= 0 or `null`. |
+| `initial_length` | Integer | `5000` | Slice length - the amount of records to be generated per initial slice. Must be greater than zero. |
+| `initial_size_kb` | Integer | `10` | Approximate size in KB to make initial records. Must be greater than zero. |
 
 ## Example job
 
@@ -98,7 +98,7 @@ echo -e "POST /total_slices/10 HTTP/1.0\r\nHost: localhost\r\n\r\n" | nc localho
             "_op": "kafka_queue_buster_generator",
             "initial_size_kb": 10,
             "initial_length": 5000,
-            "total_slices": 1000
+            "initial_total_slices": 1000
         },
         {
             "_op": "kafka_sender",

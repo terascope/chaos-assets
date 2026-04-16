@@ -4,7 +4,6 @@ import { OpConfig } from '@terascope/job-components';
 import { KafkaQueueBusterLengthConfig } from '../../asset/src/kafka_queue_buster_length/interfaces.js';
 
 // Use ports in a range unlikely to conflict with other tests
-// (19300 is used by kafka_queue_buster_generator/slicer-spec)
 let portCounter = 19500;
 
 describe('kafka_queue_buster_length schema', () => {
