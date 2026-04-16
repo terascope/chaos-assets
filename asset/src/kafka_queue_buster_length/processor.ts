@@ -45,10 +45,12 @@ export default class QueueBusterLengthProcessor extends BatchProcessor<
         if (this.replicationFactor === 1) return data;
         const replicatedData: DataEntity[] = [];
         data.forEach((doc: DataEntity, index: number) => {
+            const originalId = doc[this.unique_id_field];
             for (let rep = 1; rep <= this.replicationFactor; rep++) {
-                const newId = doc[this.unique_id_field] == null ? `${this.sliceNumber}-${index}-${rep}` : `${doc[this.unique_id_field]}-${rep}`;
-                doc[this.unique_id_field] = newId;
-                replicatedData.push(doc);
+                const clone = DataEntity.make({ ...doc });
+                const newId = originalId == null ? `${this.sliceNumber}-${index}-${rep}` : `${originalId}-${rep}`;
+                clone[this.unique_id_field] = newId;
+                replicatedData.push(clone);
             }
         });
 
