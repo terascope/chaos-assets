@@ -1,7 +1,7 @@
 {
     "name": "chaos-assets-bundle",
     "displayName": "Chaos Assets Bundle",
-    "version": "2.0.0",
+    "version": "2.1.0",
     "private": true,
     "description": "An asset bundle for developers",
     "type": "module",
@@ -22,6 +22,8 @@
         "test": "ts-scripts test asset --",
         "test:all": "ts-scripts test",
         "test:debug": "ts-scripts test --debug asset --",
+        "test:e2e": "echo 'No e2e tests for chaos assets'",
+        "test:encrypted": "echo 'No encrypted tests for chaos assets'",
         "test:watch": "ts-scripts test --watch asset --"
     },
     "devDependencies": {

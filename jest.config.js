@@ -24,7 +24,9 @@ export default {
         '<rootDir>/test/**/*-spec.{ts,js}',
         '<rootDir>/test/*-spec.{ts,js}'
     ],
-    moduleNameMapper: {},
+    moduleNameMapper: {
+        '^(\\.{1,2}/.*)\\.js$': '$1'
+    },
     preset: 'ts-jest',
     extensionsToTreatAsEsm: ['.ts'],
     globals: {
