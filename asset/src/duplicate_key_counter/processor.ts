@@ -137,7 +137,9 @@ export default class DuplicateKeyCounter extends BatchProcessor<DuplicateKeyCoun
      * omitted. Includes `record_sample` when `record_fields` is configured.
      */
     private logConsoleSummary(): void {
-        type DuplicateEntry = { value: string; record_sample?: Record<string, unknown>; count: number };
+        type DuplicateEntry = { 
+            value: string; record_sample?: Record<string, unknown>; count: number;
+        };
         const duplicates: DuplicateEntry[] = [];
         for (const [value, { count, sample }] of this.counts) {
             if (count > 1) {
