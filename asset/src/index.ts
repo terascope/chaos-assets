@@ -21,6 +21,10 @@ import KafkaQueueBusterLengthSchema from '../src/kafka_queue_buster_length/schem
 import KafkaQueueBusterSize from '../src/kafka_queue_buster_size/processor';
 import KafkaQueueBusterSizeSchema from '../src/kafka_queue_buster_size/schema';
 
+import OomSlicerFetcher from '../src/oom_slicer/fetcher';
+import OomSlicerSchema from '../src/oom_slicer/schema';
+import OomSlicerSlicer from '../src/oom_slicer/slicer';
+
 export const ASSETS = {
     duplicate_key_counter: {
         Processor: DuplicateKeyCounter,
@@ -47,5 +51,10 @@ export const ASSETS = {
     kafka_queue_buster_size: {
         Processor: KafkaQueueBusterSize,
         Schema: KafkaQueueBusterSizeSchema,
+    },
+    oom_slicer: {
+        Fetcher: OomSlicerFetcher,
+        Schema: OomSlicerSchema,
+        Slicer: OomSlicerSlicer,
     },
 };

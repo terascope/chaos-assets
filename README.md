@@ -1,6 +1,6 @@
 # chaos-assets
 
-> Teraslice chaos asset bundle
+> Teraslice chaos asset bundle. Used to intentionally create errors in teraslice jobs for testing and debugging.
 
 ## Getting Started
 
@@ -30,6 +30,7 @@ Any manual changes will be lost next time this gets auto-generated. -->
 - [kafka_queue_buster_generator](./docs/asset/operations/kafka_queue_buster_generator)
 - [kafka_queue_buster_length](./docs/asset/operations/kafka_queue_buster_length)
 - [kafka_queue_buster_size](./docs/asset/operations/kafka_queue_buster_size)
+- [oom_slicer](./docs/asset/operations/oom_slicer)
 
 ## Contributing
 
