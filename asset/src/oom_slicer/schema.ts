@@ -16,7 +16,7 @@ export default class OomSchema extends BaseSchema<OomSlicerConfig> {
                     }
                 }
             },
-            fault_on_slice: {
+            delay: {
                 doc: 'The number of milliseconds to delay on each slice. This can be used to adjust the time until the memory limit is reached. Defaults to 50',
                 default: 50,
                 format(val: any) {
