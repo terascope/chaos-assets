@@ -1,7 +1,7 @@
 {
     "name": "chaos-assets-bundle",
     "displayName": "Chaos Assets Bundle",
-    "version": "2.1.0",
+    "version": "2.2.0",
     "private": true,
     "description": "An asset bundle for developers",
     "type": "module",
@@ -29,6 +29,7 @@
     "devDependencies": {
         "@terascope/core-utils": "^2.5.1",
         "@terascope/eslint-config": "~1.1.26",
+        "@terascope/file-asset-apis": "^2.1.0",
         "@terascope/job-components": "~2.6.0",
         "@terascope/scripts": "~2.6.1",
         "@terascope/types": "^2.5.0",
@@ -61,7 +62,9 @@
         "testSuite": "unit",
         "tests": {
             "suites": {
-                "unit": []
+                "unit": [
+                    "minio"
+                ]
             }
         }
     }
