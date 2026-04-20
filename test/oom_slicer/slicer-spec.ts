@@ -35,8 +35,9 @@ describe('oom_slicer slicer', () => {
         const test = await makeSlicerTest();
         const [slice] = await test.createSlices();
 
-        expect(typeof slice.id).toEqual('string');
-        expect(slice.id).toMatch(
+        expect(slice).not.toBeNull();
+        expect(typeof slice!.id).toEqual('string');
+        expect(slice!.id).toMatch(
             /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
         );
     });
@@ -47,8 +48,11 @@ describe('oom_slicer slicer', () => {
         const [slice2] = await test.createSlices();
         const [slice3] = await test.createSlices();
 
-        expect(slice1.id).not.toEqual(slice2.id);
-        expect(slice2.id).not.toEqual(slice3.id);
+        expect(slice1).not.toBeNull();
+        expect(slice2).not.toBeNull();
+        expect(slice3).not.toBeNull();
+        expect(slice1!.id).not.toEqual(slice2!.id);
+        expect(slice2!.id).not.toEqual(slice3!.id);
     });
 
     it('should accumulate memory in oomArray with each slice', async () => {
