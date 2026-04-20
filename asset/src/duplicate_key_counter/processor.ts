@@ -10,12 +10,12 @@ import { DuplicateKeyCounterConfig } from './interfaces.js';
  * returned unchanged.
  *
  * Two output modes are supported via `report_target`:
- *   - "console" (default): logs a truncated duplicate summary to the logger after
- *     every slice. No S3 connection is required.
+ *   - "console" (default): logs a truncated duplicate summary to the logger on
+ *     the configured flush interval. No S3 connection is required.
  *   - "s3": writes a full JSON report to a configured S3 key, overwriting it on
  *     each flush so the object always holds the latest cumulative snapshot.
  *
- * Flushing (s3 mode only) is triggered by either:
+ * Flushing is triggered by either:
  *   - count-based: every `report_interval` slices (if > 0)
  *   - time-based:  whenever `report_interval_ms` ms have elapsed since the last
  *                  flush (if > 0)
@@ -98,22 +98,22 @@ export default class DuplicateKeyCounter extends BatchProcessor<DuplicateKeyCoun
 
         this.slicesProcessed++;
 
-        if (this.opConfig.report_target === 'console') {
-            this.logConsoleSummary();
-        } else {
-            // Count-based flush: trigger after every N slices when report_interval is set
-            const countFlush = this.opConfig.report_interval > 0
-                && this.slicesProcessed % this.opConfig.report_interval === 0;
+        // Count-based flush: trigger after every N slices when report_interval is set
+        const countFlush = this.opConfig.report_interval > 0
+            && this.slicesProcessed % this.opConfig.report_interval === 0;
 
-            // Time-based flush: trigger if enough wall-clock time has passed since the last write
-            const timeoutFlush = this.opConfig.report_interval_ms > 0
-                && (Date.now() - this.lastFlushTime) >= this.opConfig.report_interval_ms;
+        // Time-based flush: trigger if enough wall-clock time has passed since the last write
+        const timeoutFlush = this.opConfig.report_interval_ms > 0
+            && (Date.now() - this.lastFlushTime) >= this.opConfig.report_interval_ms;
 
-            if (countFlush || timeoutFlush) {
+        if (countFlush || timeoutFlush) {
+            if (this.opConfig.report_target === 'console') {
+                this.logConsoleSummary();
+            } else {
                 await this.writeReport();
-                // reset the timer whether flush was triggered by count or timeout
-                this.lastFlushTime = Date.now();
             }
+            // reset the timer whether flush was triggered by count or timeout
+            this.lastFlushTime = Date.now();
         }
 
         // Pass the slice through unmodified — this processor is observation-only
@@ -121,8 +121,10 @@ export default class DuplicateKeyCounter extends BatchProcessor<DuplicateKeyCoun
     }
 
     async shutdown(): Promise<void> {
-        if (this.opConfig.report_target === 's3') {
-            // Always write a final report on shutdown to capture any un-flushed counts
+        // Always flush on shutdown to capture any un-flushed counts
+        if (this.opConfig.report_target === 'console') {
+            this.logConsoleSummary();
+        } else {
             await this.writeReport();
         }
         await super.shutdown();
@@ -130,14 +132,19 @@ export default class DuplicateKeyCounter extends BatchProcessor<DuplicateKeyCoun
 
     /**
      * Logs a concise duplicate summary to the Teraslice logger.
-     * Only the top CONSOLE_MAX_ENTRIES duplicates (by count) are included to
+     * Only the top `console_max_entries` duplicates (by count) are included to
      * keep the log line readable. A trailing note is appended when entries are
-     * omitted.
+     * omitted. Includes `record_sample` when `record_fields` is configured.
      */
     private logConsoleSummary(): void {
-        const duplicates: Array<{ value: string; count: number }> = [];
-        for (const [value, { count }] of this.counts) {
-            if (count > 1) duplicates.push({ value, count });
+        type DuplicateEntry = { value: string; record_sample?: Record<string, unknown>; count: number };
+        const duplicates: DuplicateEntry[] = [];
+        for (const [value, { count, sample }] of this.counts) {
+            if (count > 1) {
+                const entry: DuplicateEntry = { value, count };
+                if (sample != null) entry.record_sample = sample;
+                duplicates.push(entry);
+            }
         }
         duplicates.sort((a, b) => b.count - a.count);
 

@@ -26,7 +26,7 @@ export default class Schema extends BaseSchema<DuplicateKeyCounterConfig> {
                 format: 'required_string'
             },
             report_target: {
-                doc: 'Where to send the duplicate report. "console" logs a truncated summary every slice; "s3" writes a full JSON report to S3 on the configured flush interval.',
+                doc: 'Where to send the duplicate report. "console" logs a truncated summary on the configured flush interval; "s3" writes a full JSON report to S3 on the configured flush interval.',
                 default: 'console',
                 format: (val: unknown): void => {
                     if (val !== 'console' && val !== 's3') {
@@ -45,7 +45,7 @@ export default class Schema extends BaseSchema<DuplicateKeyCounterConfig> {
                 format: 'optional_string'
             },
             report_interval: {
-                doc: 'Write the report every N slices. Set to 0 to disable count-based flushing (report is still written on job shutdown).',
+                doc: 'Write the report every N slices. Applies to both "console" and "s3" targets. Set to 0 to disable count-based flushing (a final flush still occurs on job shutdown).',
                 default: 100,
                 format: (val: unknown): void => {
                     if (typeof val !== 'number' || !Number.isInteger(val) || val < 0) {
@@ -54,7 +54,7 @@ export default class Schema extends BaseSchema<DuplicateKeyCounterConfig> {
                 }
             },
             report_interval_ms: {
-                doc: 'Write the report if this many milliseconds have elapsed since the last flush. The timer resets whenever a count-based flush occurs. Set to 0 to disable.',
+                doc: 'Write the report if this many milliseconds have elapsed since the last flush. Applies to both "console" and "s3" targets. The timer resets on every flush. Set to 0 to disable.',
                 default: 0,
                 format: (val: unknown): void => {
                     if (typeof val !== 'number' || !Number.isInteger(val) || val < 0) {
