@@ -45,7 +45,7 @@ describe('oom_slicer schema', () => {
 
         expect(schema).toBeDefined();
         expect(schema.bytes).toEqual(524288);
-        expect((schema as any).fault_on_slice).toEqual(50);
+        expect((schema as any).delay).toEqual(50);
     });
 
     it('should accept valid bytes values', async () => {
@@ -53,9 +53,9 @@ describe('oom_slicer schema', () => {
         expect(schema.bytes).toEqual(1024);
     });
 
-    it('should accept zero delay (fault_on_slice)', async () => {
-        const schema = await makeSchema({ fault_on_slice: 0 } as any);
-        expect((schema as any).fault_on_slice).toEqual(0);
+    it('should accept zero delay (delay)', async () => {
+        const schema = await makeSchema({ delay: 0 } as any);
+        expect((schema as any).delay).toEqual(0);
     });
 
     it('should reject invalid bytes values', async () => {
@@ -66,10 +66,10 @@ describe('oom_slicer schema', () => {
         await expect(makeSchema({ bytes: {} as any })).toReject();
     });
 
-    it('should reject invalid fault_on_slice values', async () => {
-        await expect(makeSchema({ fault_on_slice: -1 } as any)).toReject();
-        await expect(makeSchema({ fault_on_slice: 1.5 } as any)).toReject();
-        await expect(makeSchema({ fault_on_slice: 'fast' } as any)).toReject();
-        await expect(makeSchema({ fault_on_slice: [] } as any)).toReject();
+    it('should reject invalid delay values', async () => {
+        await expect(makeSchema({ delay: -1 } as any)).toReject();
+        await expect(makeSchema({ delay: 1.5 } as any)).toReject();
+        await expect(makeSchema({ delay: 'fast' } as any)).toReject();
+        await expect(makeSchema({ delay: [] } as any)).toReject();
     });
 });
