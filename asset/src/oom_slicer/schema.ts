@@ -1,8 +1,9 @@
-import { AnyObject, ConvictSchema } from '@terascope/job-components';
-import { OomSlicer } from './interfaces';
+import { BaseSchema } from '@terascope/job-components';
+import { Terafoundation } from '@terascope/types';
+import { OomSlicerConfig } from './interfaces.js';
 
-export default class OomSchema extends ConvictSchema<OomSlicer> {
-    build(): AnyObject {
+export default class OomSchema extends BaseSchema<OomSlicerConfig> {
+    build(): Terafoundation.Schema<Omit<OomSlicerConfig, '_op'>> {
         return {
             bytes: {
                 doc: 'The number of random bytes to add to an array each slice. This large array will eventually use all available memory. Defaults to 524288 (0.5 mb)',

@@ -1,6 +1,6 @@
 import { OpConfig } from '@terascope/types';
 
-export interface OomSlicer extends OpConfig {
+export interface OomSlicerConfig extends OpConfig {
     bytes: number;
     delay: number;
 }

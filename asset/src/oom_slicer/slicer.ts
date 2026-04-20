@@ -1,14 +1,15 @@
-import { v4 as uuid } from 'uuid';
-import { Slicer, pDelay } from '@terascope/job-components';
 import crypto from 'crypto';
-import { OomSlicer } from './interfaces';
+import { v4 as uuid } from 'uuid';
+import { Slicer } from '@terascope/job-components';
+import { pDelay } from '@terascope/core-utils';
+import { OomSlicerConfig } from './interfaces.js';
 
 export default class OOMSlicer extends Slicer {
     oomArray: Array<Buffer>;
     bytes: number;
     delay: number;
 
-    constructor(...args: ConstructorParameters<typeof Slicer<OomSlicer>>) {
+    constructor(...args: ConstructorParameters<typeof Slicer<OomSlicerConfig>>) {
         super(...args);
         this.oomArray = [];
         this.bytes = this.opConfig.bytes;
