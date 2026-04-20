@@ -137,7 +137,7 @@ export default class DuplicateKeyCounter extends BatchProcessor<DuplicateKeyCoun
      * omitted. Includes `record_sample` when `record_fields` is configured.
      */
     private logConsoleSummary(): void {
-        type DuplicateEntry = { 
+        type DuplicateEntry = {
             value: string; record_sample?: Record<string, unknown>; count: number;
         };
         const duplicates: DuplicateEntry[] = [];
@@ -152,12 +152,12 @@ export default class DuplicateKeyCounter extends BatchProcessor<DuplicateKeyCoun
 
         const shown = duplicates.slice(0, this.opConfig.console_max_entries);
         const omitted = duplicates.length - shown.length;
-        const suffix = omitted > 0 ? ` ... and ${omitted} more` : '';
+        const suffix = omitted > 0 ? ` (showing top ${shown.length} of ${duplicates.length})` : '';
 
         this.logger.info(
+            { top_duplicates: shown },
             `duplicate_key_counter [slice ${this.slicesProcessed}] `
-            + `unique=${this.counts.size} duplicates=${duplicates.length}${suffix}: `
-            + JSON.stringify(shown)
+            + `unique=${this.counts.size} duplicates=${duplicates.length}${suffix}`
         );
     }
 
