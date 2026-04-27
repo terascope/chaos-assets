@@ -27,11 +27,11 @@
         "test:watch": "ts-scripts test --watch asset --"
     },
     "devDependencies": {
-        "@terascope/core-utils": "^2.5.1",
-        "@terascope/eslint-config": "~1.1.26",
+        "@terascope/core-utils": "^2.5.3",
+        "@terascope/eslint-config": "~1.1.31",
         "@terascope/file-asset-apis": "^2.1.0",
-        "@terascope/job-components": "~2.6.0",
-        "@terascope/scripts": "~2.6.1",
+        "@terascope/job-components": "~2.6.2",
+        "@terascope/scripts": "~2.7.0",
         "@terascope/types": "^2.5.0",
         "@types/express": "~5.0.5",
         "@types/fs-extra": "~11.0.4",
@@ -47,7 +47,7 @@
         "jest-extended": "~7.0.0",
         "node-notifier": "~10.0.1",
         "semver": "~7.7.3",
-        "teraslice-test-harness": "~2.7.0",
+        "teraslice-test-harness": "~2.7.2",
         "ts-jest": "~29.4.9",
         "tslib": "~2.8.1",
         "typescript": "~5.9.3"
