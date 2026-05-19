@@ -22,7 +22,7 @@
         "test": "ts-scripts test asset --",
         "test:all": "ts-scripts test",
         "test:debug": "ts-scripts test --debug asset --",
-        "test:e2e": "echo 'No e2e tests for chaos assets'",
+        "test:e2e": "exit 1",
         "test:encrypted": "echo 'No encrypted tests for chaos assets'",
         "test:watch": "ts-scripts test --watch asset --"
     },
