@@ -1,0 +1,18 @@
+name: Daily Docker Cache
+
+on:
+  schedule:
+    - cron: '15 10 * * 1-5' # Monday - Friday at 3:15am Arizona Time
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  call-refresh-docker-cache-workflow:
+    uses: terascope/workflows/.github/workflows/refresh-docker-cache.yml@d2864085b6d36798749fce3dd549dae10283f76a
+    permissions:
+      actions: write
+      contents: read
+    secrets:
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
