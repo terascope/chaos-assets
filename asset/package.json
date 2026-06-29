@@ -17,9 +17,9 @@
     },
     "dependencies": {
         "@terascope/core-utils": "^2.12.1",
-        "@terascope/data-mate": "~2.13.1",
+        "@terascope/data-mate": "~2.13.2",
         "@terascope/file-asset-apis": "^2.1.1",
-        "@terascope/job-components": "~2.14.1",
+        "@terascope/job-components": "~2.14.2",
         "@terascope/teraslice-state-storage": "~2.12.1",
         "@types/express": "~5.0.5",
         "express": "~5.2.1",
