@@ -13,6 +13,7 @@ minimumReleaseAge: 1440 # 1 day
 minimumReleaseAgeExclude:
   - '@terascope/*'
   - teraslice-test-harness
+  - xlucene-parser
 
 trustPolicy: no-downgrade
 
