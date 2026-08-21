@@ -2,7 +2,7 @@ import {
     Fetcher, Context,
     ExecutionConfig
 } from '@terascope/job-components';
-import { KafkaQueueBusterConfig, QueueBusterSliceRequest } from './interfaces';
+import { KafkaQueueBusterConfig, QueueBusterSliceRequest } from './interfaces.js';
 
 export default class QueueBusterFetcher extends Fetcher<KafkaQueueBusterConfig> {
     constructor(context: Context, opConfig: KafkaQueueBusterConfig, exConfig: ExecutionConfig) {
