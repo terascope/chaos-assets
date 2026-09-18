@@ -16,9 +16,9 @@ import type { Terafoundation } from '@terascope/types';
 const logger = debugLogger('test-logger');
 
 const TEST_S3_CONFIG: S3ClientConfig = {
-    endpoint: process.env.MINIO_HOST ?? 'http://localhost:9000',
-    accessKeyId: process.env.MINIO_ACCESS_KEY ?? 'minioadmin',
-    secretAccessKey: process.env.MINIO_SECRET_KEY ?? 'minioadmin',
+    endpoint: process.env.CEPH_HOST ?? 'http://localhost:9500',
+    accessKeyId: process.env.CEPH_ACCESS_KEY ?? 'cephtestaccesskey',
+    secretAccessKey: process.env.CEPH_SECRET_KEY ?? 'cephtestsecretkey',
     forcePathStyle: true,
     sslEnabled: false,
     region: 'us-east-1',
@@ -87,7 +87,7 @@ describe('duplicate_key_counter processor', () => {
         s3Client = await createS3Client(TEST_S3_CONFIG, logger);
     });
 
-    // Fetches the report from MinIO and returns it as a parsed object.
+    // Fetches the report from S3 and returns it as a parsed object.
     // Throws NoSuchKey if the processor hasn't written it yet, which lets
     // tests use toReject() to confirm no flush happened.
     async function readReport(key = S3_DEFAULTS.report_path): Promise<any> {
