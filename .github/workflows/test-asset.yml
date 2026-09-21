@@ -15,7 +15,7 @@ permissions: {}
 
 jobs:
   call-asset-test-workflow:
-    uses: terascope/workflows/.github/workflows/asset-test.yml@ee93e5655fd79976999f2c665ac1b6d7e334ec3b
+    uses: terascope/workflows/.github/workflows/asset-test.yml@1a5d64fcdb79d88443f0eb9468a9bd8117cc4bea
     with:
       teraslice-cli-version: ${{ (startsWith(github.ref, 'refs/heads/release/chaos-assets-v') || startsWith(github.base_ref, 'release/chaos-assets-v')) && 'prerelease' || 'latest' }}
     permissions:

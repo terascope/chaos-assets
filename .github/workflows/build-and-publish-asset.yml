@@ -14,7 +14,7 @@ permissions: {}
 jobs:
   call-asset-build:
     if: github.event.pull_request.merged == true
-    uses: terascope/workflows/.github/workflows/asset-build-and-publish.yml@ee93e5655fd79976999f2c665ac1b6d7e334ec3b
+    uses: terascope/workflows/.github/workflows/asset-build-and-publish.yml@1a5d64fcdb79d88443f0eb9468a9bd8117cc4bea
     with:
       teraslice-cli-version: ${{ startsWith(github.base_ref, 'release/chaos-assets-v') && 'prerelease' || 'latest' }}
     permissions:
