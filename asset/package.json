@@ -16,11 +16,11 @@
         "test": "pnpm -C ../ test"
     },
     "dependencies": {
-        "@terascope/core-utils": "^2.25.0",
-        "@terascope/data-mate": "~2.26.0",
-        "@terascope/file-asset-apis": "^2.3.1",
-        "@terascope/job-components": "~2.27.0",
-        "@terascope/teraslice-state-storage": "~2.26.0",
+        "@terascope/core-utils": "^2.26.0",
+        "@terascope/data-mate": "~2.27.0",
+        "@terascope/file-asset-apis": "^2.4.0",
+        "@terascope/job-components": "~2.28.0",
+        "@terascope/teraslice-state-storage": "~2.27.0",
         "@types/express": "~5.0.5",
         "express": "~5.3.0",
         "tslib": "~2.9.1",
